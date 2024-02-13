@@ -1,0 +1,14 @@
+{
+  "module_label": "Test de persistance",
+  "module_desc": "Portocole de test de persistance",
+  "display_properties": ["module_label", "module_desc"],
+  "specific": {
+  "datasets": {
+    "type_widget": "dataset",
+    "type_util": "dataset",
+    "attribut_label": "Jeu de données",
+    "required": false,
+    "multi_select": true
+  }
+}
+}

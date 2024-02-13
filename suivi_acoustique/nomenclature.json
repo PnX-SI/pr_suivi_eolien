@@ -1,0 +1,747 @@
+{
+  "types": [
+    {
+      "mnemonique": "TYPE_ETUDE",
+      "label_default": "Type étude",
+      "definition_default": "Type d'étude, pré ou post-implantation."
+    },
+    {
+      "mnemonique": "TYPE_REPLICAS",
+      "label_default": "Type Replicas",
+      "definition_default": "Type d'identifiant du point/transect."
+    },
+    {
+      "mnemonique": "PRESENCE_ACOUSTIQUE",
+      "label_default": "Présence Acoustique",
+      "definition_default": "Indique si au moins un contact acoustique a été relevé durant le point ou le transect dans sa globalité. Ce champ permet en cas d'absence totale d'activité de saisir une absence de chiroptères."
+    },
+    {
+      "mnemonique": "TYPE_HAUTEUR",
+      "label_default": "Type Hauteur",
+      "definition_default": "Type de support."
+    },
+    {
+      "mnemonique": "POSITION_NACELLE",
+      "label_default": "Position Nacelle",
+      "definition_default": "Position verticale du microphone par rapport à la nacelle pour les enregistrements en nacelle."
+    },
+    {
+      "mnemonique": "EVALUATION_PLUIE_TRANCHE",
+      "label_default": "Evaluation Pluie_Tranche",
+      "definition_default": "Indique si la station de mesure de la quantité de précipitation en nacelle est existante et fonctionnelle."
+    },
+    {
+      "mnemonique": "EVALUATION_VENT_MOYEN_TRANCHE",
+      "label_default": "Evaluation Vent Moyen Tranche",
+      "definition_default": "Indique si la station de mesure de la vitesse de vent en nacelle est existante et fonctionnelle."
+    },
+    {
+      "mnemonique": "EVALUATION_VITESSE_EOLIENNE",
+      "label_default": "Evaluation vitesse éolienne",
+      "definition_default": "Indique si la mesure de la vitesse de rotation des pales est disponible et fonctionnelle."
+    },
+    {
+      "mnemonique": "METHODE_ETUDE",
+      "label_default": "Methode Etude",
+      "definition_default": "Protocole d'étude acoustique utilisée pour recueillir l'enregistrement."
+    },
+    {
+      "mnemonique": "TYPE_ENREGISTREMENT",
+      "label_default": "Type Enregistrement",
+      "definition_default": "Méthode d'acquisition de l'enregistrement acoustique."
+    },
+    {
+      "mnemonique": "TYPE_IDENTIFICATION",
+      "label_default": "Type Identification",
+      "definition_default": "Méthode d'identification pour les écoutes manuelles."
+    },
+    {
+      "mnemonique": "METHODE_IDENTIFICATION",
+      "label_default": "Methode Identification",
+      "definition_default": "Méthode d'identification informatique."
+    },
+    {
+      "mnemonique": "LOGICIEL_ID_AUTO",
+      "label_default": "Logiciel Id_Auto",
+      "definition_default": "Nom du logiciel d'identification automatique utilisé."
+    },
+    {
+      "mnemonique": "TYPE_CANAL",
+      "label_default": "Type Canal",
+      "definition_default": "Indique si l'enregistrement autonome a été réalisé en stéréo ou en mono."
+    },
+    {
+      "mnemonique": "TRIGGER",
+      "label_default": "Trigger",
+      "definition_default": "Utilisation ou non d'un déclencheur (Trigger) de l'enregistrement."
+    },
+    {
+      "mnemonique": "GAIN",
+      "label_default": "Gain",
+      "definition_default": "Indique si une augmentation du gain du pré-ampli a été utilisée."
+    },
+    {
+      "mnemonique": "MODELE_MATERIEL",
+      "label_default": "Modele Matériel",
+      "definition_default": "Modèle du matériel acoustique utilisé."
+    },
+    {
+      "mnemonique": "TYPE_DUREE",
+      "label_default": "Type Durée",
+      "definition_default": "Catégorie de durée d'enregistrement ou d'écoute sur le point/transect d'échantillonnage."
+    }
+  ],
+  "nomenclatures": [
+    {
+      "type": "TYPE_ETUDE",
+      "cd_nomenclature": "Pre implantation",
+      "mnemonique": "PR",
+      "label_default": "Etude pré-implantation",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_ETUDE",
+      "cd_nomenclature": "Post implantantion",
+      "mnemonique": "PO",
+      "label_default": "Etude post-implantation",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_REPLICAS",
+      "cd_nomenclature": "TYPE_REPLICAS_1",
+      "mnemonique": "N",
+      "label_default": "Nouveau point/transect",
+      "definition_default": "Nouveau point/transect n'ayant pas été réalisé lors de l'étude pré-implantation."
+    },
+    {
+      "type": "TYPE_REPLICAS",
+      "cd_nomenclature": "TYPE_REPLICAS_2",
+      "mnemonique": "R1",
+      "label_default": "Réplicas d'un point/transect pré-implantation",
+      "definition_default": "Réplicas d'un point/transect réalisé dans l'étude pré-implantation."
+    },
+    {
+      "type": "TYPE_REPLICAS",
+      "cd_nomenclature": "TYPE_REPLICAS_3",
+      "mnemonique": "R2",
+      "label_default": "Réplicas d'un point/transect post-implantation",
+      "definition_default": "Réplicas d'un point réalisé dans une étude post-implantation précédente."
+    },
+    {
+      "type": "TYPE_REPLICAS",
+      "cd_nomenclature": "TYPE_REPLICAS_4",
+      "mnemonique": "R3",
+      "label_default": "Combinaison de R1 et R2.",
+      "definition_default": ""
+    },
+    {
+      "type": "PRESENCE_ACOUSTIQUE",
+      "cd_nomenclature": "1",
+      "mnemonique": "Au moins un contact acoustique relevé",
+      "label_default": "Au moins un contact acoustique relevé",
+      "definition_default": ""
+    },
+    {
+      "type": "PRESENCE_ACOUSTIQUE",
+      "cd_nomenclature": "0",
+      "mnemonique": "Absence totale d'activité",
+      "label_default": "Absence totale d'activité",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_HAUTEUR",
+      "cd_nomenclature": "TYPE_REPLICAS_1",
+      "mnemonique": "Nacelle",
+      "label_default": "Nacelle",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_HAUTEUR",
+      "cd_nomenclature": "TYPE_REPLICAS_2",
+      "mnemonique": "Mât de mesure",
+      "label_default": "Mât de mesure",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_HAUTEUR",
+      "cd_nomenclature": "TYPE_REPLICAS_3",
+      "mnemonique": "Mat éoliene",
+      "label_default": "Mât de l'éolienne",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_HAUTEUR",
+      "cd_nomenclature": "TYPE_REPLICAS_4",
+      "mnemonique": "Ballon",
+      "label_default": "Ballon",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_HAUTEUR",
+      "cd_nomenclature": "TYPE_REPLICAS_5",
+      "mnemonique": "Arbre",
+      "label_default": "Arbre",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_HAUTEUR",
+      "cd_nomenclature": "TYPE_REPLICAS_6",
+      "mnemonique": "Sol",
+      "label_default": "Sol",
+      "definition_default": ""
+    },
+    {
+      "type": "POSITION_NACELLE",
+      "cd_nomenclature": "POSITION_NACELLE_1",
+      "mnemonique": "H",
+      "label_default": "Au-dessus",
+      "definition_default": ""
+    },
+    {
+      "type": "POSITION_NACELLE",
+      "cd_nomenclature": "POSITION_NACELLE_2",
+      "mnemonique": "B",
+      "label_default": "En-dessous",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_PLUIE_TRANCHE",
+      "cd_nomenclature": "EVALUATION_PLUIE_TRANCHE_1",
+      "mnemonique": "F",
+      "label_default": "Fonctionnelle",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_PLUIE_TRANCHE",
+      "cd_nomenclature": "EVALUATION_PLUIE_TRANCHE_2",
+      "mnemonique": "NF",
+      "label_default": "Non fonctionnelle/panne",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_PLUIE_TRANCHE",
+      "cd_nomenclature": "EVALUATION_PLUIE_TRANCHE_3",
+      "mnemonique": "A",
+      "label_default": "Absence de station de mesure",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_VENT_MOYEN_TRANCHE",
+      "cd_nomenclature": "EVALUATION_VENT_MOYEN_TRANCHE_1",
+      "mnemonique": "F",
+      "label_default": "Fonctionnelle",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_VENT_MOYEN_TRANCHE",
+      "cd_nomenclature": "EVALUATION_VENT_MOYEN_TRANCHE_2",
+      "mnemonique": "NF",
+      "label_default": "Non fonctionnelle/panne",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_VENT_MOYEN_TRANCHE",
+      "cd_nomenclature": "EVALUATION_VENT_MOYEN_TRANCHE_3",
+      "mnemonique": "A",
+      "label_default": "Absence de station de mesure",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_VITESSE_EOLIENNE",
+      "cd_nomenclature": "EVALUATION_VITESSE_EOLIENNE_1",
+      "mnemonique": "F",
+      "label_default": "Fonctionnelle",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_VITESSE_EOLIENNE",
+      "cd_nomenclature": "EVALUATION_VITESSE_EOLIENNE_2",
+      "mnemonique": "NF",
+      "label_default": "Non fonctionnelle/panne",
+      "definition_default": ""
+    },
+    {
+      "type": "EVALUATION_VITESSE_EOLIENNE",
+      "cd_nomenclature": "EVALUATION_VITESSE_EOLIENNE_3",
+      "mnemonique": "A",
+      "label_default": "Absence de station de mesure",
+      "definition_default": ""
+    },
+    {
+      "type": "METHODE_ETUDE",
+      "cd_nomenclature": "METHODE_ETUDE_1",
+      "mnemonique": "PF",
+      "label_default": "Point fixe",
+      "definition_default": ""
+    },
+    {
+      "type": "METHODE_ETUDE",
+      "cd_nomenclature": "METHODE_ETUDE_2",
+      "mnemonique": "TR",
+      "label_default": "Transect",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_ENREGISTREMENT",
+      "cd_nomenclature": "TYPE_ENREGISTREMENT_1",
+      "mnemonique": "EA",
+      "label_default": "Enregistreur automatique passif",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_ENREGISTREMENT",
+      "cd_nomenclature": "TYPE_ENREGISTREMENT_2",
+      "mnemonique": "EM",
+      "label_default": "Ecoute manuelle active",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_IDENTIFICATION",
+      "cd_nomenclature": "TYPE_IDENTIFICATION_1",
+      "mnemonique": "IM",
+      "label_default": "Identification manuelle",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_IDENTIFICATION",
+      "cd_nomenclature": "TYPE_IDENTIFICATION_2",
+      "mnemonique": "VI",
+      "label_default": "Validation sur logiciel informatique après enregistrement de la séquence",
+      "definition_default": ""
+    },
+    {
+      "type": "METHODE_IDENTIFICATION",
+      "cd_nomenclature": "METHODE_IDENTIFICATION_1",
+      "mnemonique": "A",
+      "label_default": "Automatisée",
+      "definition_default": ""
+    },
+    {
+      "type": "METHODE_IDENTIFICATION",
+      "cd_nomenclature": "METHODE_IDENTIFICATION_2",
+      "mnemonique": "M",
+      "label_default": "Manuelle en utilisant un logiciel de visualisation des cris",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_1",
+      "mnemonique": "Kal",
+      "label_default": "Kaleidoscope",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_2",
+      "mnemonique": "Tad",
+      "label_default": "Tadarida",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_3",
+      "mnemonique": "Son",
+      "label_default": "SonoChiro",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_4",
+      "mnemonique": "BC",
+      "label_default": "BatClassify",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_5",
+      "mnemonique": "BI",
+      "label_default": "BatIdent",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_6",
+      "mnemonique": "BE",
+      "label_default": "Bat Explorer",
+      "definition_default": ""
+    },
+    {
+      "type": "LOGICIEL_ID_AUTO",
+      "cd_nomenclature": "LOGICIEL_ID_AUTO_7",
+      "mnemonique": "AU",
+      "label_default": "Autre",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_CANAL",
+      "cd_nomenclature": "TYPECANAL_1",
+      "mnemonique": "S",
+      "label_default": "Stéréo",
+      "definition_default": "Deux séries d'enregistrements provenant d'un même enregistreur paramétré en stéréo doivent être associés à un IdAcoustique identique, et des GeomAcoustique différents si les micros sont positionnés à distance les uns des autres. A noter que dans le cas de micros en stéréo espacés le long d'un mat d'éolienne."
+    },
+    {
+      "type": "TYPE_CANAL",
+      "cd_nomenclature": "TYPECANAL_2",
+      "mnemonique": "M",
+      "label_default": "Mono",
+      "definition_default": ""
+    },
+    {
+      "type": "TRIGGER",
+      "cd_nomenclature": "TRIGGER_0",
+      "mnemonique": "0",
+      "label_default": "Non",
+      "definition_default": ""
+    },
+    {
+      "type": "TRIGGER",
+      "cd_nomenclature": "TRIGGER_1",
+      "mnemonique": "1",
+      "label_default": "Oui",
+      "definition_default": ""
+    },
+    {
+      "type": "GAIN",
+      "cd_nomenclature": "GAIN_0",
+      "mnemonique": "0",
+      "label_default": "Non",
+      "definition_default": ""
+    },
+    {
+      "type": "GAIN",
+      "cd_nomenclature": "GAIN_1",
+      "mnemonique": "1",
+      "label_default": "Oui",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_DUREE",
+      "cd_nomenclature": "TYPE_DUREE_1",
+      "mnemonique": "Comp",
+      "label_default": "Nuit complète du coucher au lever du soleil",
+      "definition_default": ""
+    },
+    {
+      "type": "TYPE_DUREE",
+      "cd_nomenclature": "TYPE_DUREE_2",
+      "mnemonique": "Part",
+      "label_default": "Partielle",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_1",
+      "mnemonique": "1",
+      "label_default": "Anabat Express",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_2",
+      "mnemonique": "2",
+      "label_default": "Anabat Roost Logger",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_3",
+      "mnemonique": "3",
+      "label_default": "Anabat Scout",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_4",
+      "mnemonique": "4",
+      "label_default": "Anabat SD2",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_5",
+      "mnemonique": "5",
+      "label_default": "Anabat Swift",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_6",
+      "mnemonique": "6",
+      "label_default": "Anabat Walkabout",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_7",
+      "mnemonique": "7",
+      "label_default": "Audiomoth",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_8",
+      "mnemonique": "8",
+      "label_default": "Avisoft UltraSoundGate CM16",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_9",
+      "mnemonique": "9",
+      "label_default": "BatBox duet",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_10",
+      "mnemonique": "10",
+      "label_default": "BatBox IIID",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_11",
+      "mnemonique": "11",
+      "label_default": "Batcorder",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_12",
+      "mnemonique": "12",
+      "label_default": "Batlogger A",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_13",
+      "mnemonique": "13",
+      "label_default": "Batlogger A+",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_14",
+      "mnemonique": "14",
+      "label_default": "Batlogger C",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_15",
+      "mnemonique": "15",
+      "label_default": "Batlogger M",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_16",
+      "mnemonique": "16",
+      "label_default": "Batmode S+",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_17",
+      "mnemonique": "17",
+      "label_default": "Baton XD",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_18",
+      "mnemonique": "18",
+      "label_default": "Echo Meter Touch",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_19",
+      "mnemonique": "19",
+      "label_default": "Echo Meter Touch 2",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_20",
+      "mnemonique": "20",
+      "label_default": "Echo Meter Touch pro",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_21",
+      "mnemonique": "21",
+      "label_default": "Elekon Batscanner Standard",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_22",
+      "mnemonique": "22",
+      "label_default": "Elekon Batscanner Stéréo",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_23",
+      "mnemonique": "23",
+      "label_default": "GSM Batcorder",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_24",
+      "mnemonique": "24",
+      "label_default": "Magenta Mk5",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_25",
+      "mnemonique": "25",
+      "label_default": "Mini-Batcorder",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_26",
+      "mnemonique": "26",
+      "label_default": "Passive recorder",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_27",
+      "mnemonique": "27",
+      "label_default": "Peersonic RPA3",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_28",
+      "mnemonique": "28",
+      "label_default": "Petterson D100",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_29",
+      "mnemonique": "29",
+      "label_default": "Petterson D1000X",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_30",
+      "mnemonique": "30",
+      "label_default": "Petterson D200",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_31",
+      "mnemonique": "31",
+      "label_default": "Petterson D230",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_32",
+      "mnemonique": "32",
+      "label_default": "Petterson D240",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_33",
+      "mnemonique": "33",
+      "label_default": "Petterson D240X",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_34",
+      "mnemonique": "34",
+      "label_default": "Petterson D500X",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_35",
+      "mnemonique": "35",
+      "label_default": "Petterson M500",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_36",
+      "mnemonique": "36",
+      "label_default": "SM2BAT",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_37",
+      "mnemonique": "37",
+      "label_default": "SM2BAT+",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_38",
+      "mnemonique": "38",
+      "label_default": "SM3BAT",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_39",
+      "mnemonique": "39",
+      "label_default": "SM4BAT",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_40",
+      "mnemonique": "40",
+      "label_default": "SMZC",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_41",
+      "mnemonique": "41",
+      "label_default": "Song Meter Mini Bat",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_42",
+      "mnemonique": "42",
+      "label_default": "SSF Bat2",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_43",
+      "mnemonique": "43",
+      "label_default": "Ultramic 250K",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_44",
+      "mnemonique": "44",
+      "label_default": "Ultramic 384K BLE",
+      "definition_default": ""
+    },
+    {
+      "type": "MODELE_MATERIEL",
+      "cd_nomenclature": "MODELE_MATERIEL_45",
+      "mnemonique": "45",
+      "label_default": "Autre",
+      "definition_default": ""
+    }
+  ]
+}

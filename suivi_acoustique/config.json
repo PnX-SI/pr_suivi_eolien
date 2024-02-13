@@ -1,0 +1,20 @@
+{
+  "tree": {
+    "module": {
+      "sites_group": {
+        "site": {
+          "visit": {
+            "observation": null
+          }
+        }
+      },
+      "site": null
+    }
+  },
+  "permission_objects": [
+    "GNM_GRP_SITES",
+    "GNM_SITES",
+    "GNM_VISITES",
+    "GNM_OBSERVATIONS"
+  ]
+}

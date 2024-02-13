@@ -1,0 +1,155 @@
+{
+  "types": [
+    {
+      "mnemonique": "CONTEXTE_SAISIE",
+      "label_default": "Contexte saisie",
+      "definition_default": "Contexte de la saisie de l'éolienne, à savoir s'il s'agit d'une éolienne implantée initialement à la création du parc, si l'éolienne constitue un repowering ou si l'éolienne constitue une extension du parc."
+    },
+    {
+      "mnemonique": "TYPE_DONNEE",
+      "label_default": "Type de données récoltées",
+      "definition_default": "Type de données récoltées"
+    },
+    {
+      "mnemonique": "TYPE_LEURRE",
+      "label_default": "Type_Leurre",
+      "definition_default": "Type de leurre servant au test observateur."
+    },
+	{
+      "mnemonique": "COULEUR_LEURRE",
+      "label_default": "Couleur_Leurre",
+      "definition_default": "Couleur du cadavre ou du leurre. La couleur sélectionnée doit être celle qui se rapproche le plus en moyenne de celles proposées."
+    },
+	{
+      "mnemonique": "EFFICACITE",
+      "label_default": "Efficacite",
+      "definition_default": "Efficacité de l'observateur lors de la recherche du cadavre."
+    },
+    {
+      "mnemonique": "PRES_FORET",
+      "label_default": "Présence forêt",
+      "definition_default": "Présence forêt"
+    }
+  ],
+  "nomenclatures": [
+    {
+      "type": "CONTEXTE_SAISIE",
+      "cd_nomenclature": "INI",
+      "mnemonique": "Initial",
+      "label_default": "Initial",
+      "definition_default": "Initial"
+    },
+    {
+      "type": "CONTEXTE_SAISIE",
+      "cd_nomenclature": "REP",
+      "mnemonique": "Repowering",
+      "label_default": "Repowering",
+      "definition_default": "Repowering"
+    },
+    {
+      "type": "CONTEXTE_SAISIE",
+      "cd_nomenclature": "EXT",
+      "mnemonique": "Extension",
+      "label_default": "Extension",
+      "definition_default": "Extension"
+    },
+    {
+      "type": "TYPE_DONNEE",
+      "cd_nomenclature": "MORTALITE",
+      "mnemonique": "Mortalite",
+      "label_default": "Mortalite",
+      "definition_default": "Mortalité ou présence de cadavre. Le suivi de mortalité des oiseaux et chiroptères sera constitué au minimum de 20 prospections, réparties entre les semaines 20 et 43 (mi mai à octobre), en fonction des risques identifiés dans l'étude d'impact, de la bibliographie et de la connaissance du site. A ce titre, il est rappelé que la période de mi août à fin octobre qui correspond à la période de migration postnuptiale pour l’avifaune et de transits automnaux des chiroptères est considérée comme à cibler en priorité. La période de mai à mi-juillet présente également un intérêt particulier pour les espèces d'oiseaux nicheurs sur le secteur considéré, ainsi que pour les chauves-souris en période de mise-bas."
+    },
+    {
+      "type": "TYPE_DONNEE",
+      "cd_nomenclature": "PERS_CADAVRE",
+      "mnemonique": "Test de persistance",
+      "label_default": "Test de persistance",
+      "definition_default": "Test de persistance de cadavre. Il est recommandé de réaliser 2 tests de persistance des cadavres par suivi, à des périodes distinctes, selon le protocole suivant : 1. Disperser de nouveau les cadavres (entre 3 et 5 par éolienne) sous les différentes éoliennes du parc 2. Suivre la persistance des cadavres par des passages répétés. 3. Au minimum, un retour le lendemain du jour de dispersion, puis 2 par semaines jusqu’à disparition des cadavres ou après une période de 14 jours. "
+    },
+    {
+      "type": "TYPE_DONNEE",
+      "cd_nomenclature": "EFF_OBSERVATEUR",
+      "mnemonique": "Efficacité de l'observateur",
+      "label_default": "Efficacité de l'observateur",
+      "definition_default": "Efficacité de l'observateur. Il est recommandé de réaliser 2 tests d'efficacité de recherche par campagne de suivi annuel, à des périodes distinctes, selon le protocole suivant : 1. Choisir une ou plusieurs éoliennes où les différents types de végétation du parc éolien sont représentés et reporter ces derniers sur une carte. 2. Un 1er opérateur disperse un total de 15 à 20 leurres de tailles différentes sur les différents types de végétation, à l’abri du regard de l’opérateur dont l’efficacité doit être testée. Il note la position des leurres dispersés pour faciliter leur récupération par la suite. 3. Le chercheur prospecte alors le carré échantillon en respectant le protocole (transects)."
+    },
+    {
+      "type":"TYPE_LEURRE",
+      "cd_nomenclature": "BIOLOGIQUE",
+      "mnemonique": "Bio",
+      "label_default": "Matériel biologique mort",
+      "definition_default": "Matériel biologique mort (oiseau ou chiroptère)"
+      },
+	  {
+      "type":"TYPE_LEURRE",
+      "cd_nomenclature": "ARTIFICIEL",
+      "mnemonique": "Art",
+      "label_default": "Matériel artificiel",
+      "definition_default": "matériel artificiel (tissu, plastique…)"
+      },
+	   {
+      "type":"COULEUR_LEURRE",
+      "cd_nomenclature": "BLANC",
+      "mnemonique": "Bl",
+      "label_default": "Blanc",
+      "definition_default": ""
+      },
+	  {
+      "type":"COULEUR_LEURRE",
+      "cd_nomenclature": "GRIS",
+      "mnemonique": "Gr",
+      "label_default": "Gris",
+      "definition_default": ""
+      },
+	  {
+      "type":"COULEUR_LEURRE",
+      "cd_nomenclature": "JAUNE",
+      "mnemonique": "Ja",
+      "label_default": "Jaune",
+      "definition_default": ""
+      },
+	  {
+      "type":"COULEUR_LEURRE",
+      "cd_nomenclature": "MARRON",
+      "mnemonique": "Ma",
+      "label_default": "Marron",
+      "definition_default": ""
+      },
+	  {
+      "type":"COULEUR_LEURRE",
+      "cd_nomenclature": "NOIR",
+      "mnemonique": "No",
+      "label_default": "Noir",
+      "definition_default": ""
+      },
+	  {
+      "type":"EFFICACITE",
+      "cd_nomenclature": "1",
+      "mnemonique": "1",
+      "label_default": "Cadavre trouvé par l'observateur",
+      "definition_default": ""
+      },
+	  {
+      "type":"EFFICACITE",
+      "cd_nomenclature": "0",
+      "mnemonique": "0",
+      "label_default": "Cadavre non trouvé par l'observateur",
+      "definition_default": ""
+      },
+    {
+      "type": "PRES_FORET",
+      "cd_nomenclature": "1",
+      "mnemonique": "Forêt",
+      "label_default": "Forêt",
+      "definition_default": "Forêt"
+    },
+    {
+      "type": "PRES_FORET",
+      "cd_nomenclature": "0",
+      "mnemonique": "Pas de fôret",
+      "label_default": "Pas de fôret",
+      "definition_default": "Pas de fôret"
+    }
+  ]
+}

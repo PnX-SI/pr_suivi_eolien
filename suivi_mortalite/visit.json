@@ -1,0 +1,145 @@
+{
+  "cruved": { "C": 1, "U": 1, "D": 3 },
+  "display_properties": [
+    "id_base_site",
+    "visit_date_min",
+    "visit_date_max",
+    "heure_debut_recherche",
+    "nb_observations",
+    "observers",
+    "observers_txt",
+    "duree_recherche",
+    "longueur_surface",
+    "surface_recherche",
+    "pourcentage_foret",
+    "id_nomenclature_forme_surface",
+    "id_nomenclature_type_surface",
+    "surface_veg",
+    "hauteur_moyenne_veg",
+    "id_type_donnee"
+  ],
+  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
+  "map_label_field_name": "base_site_code",
+  "specific": {
+    "id_dataset": {
+      "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
+    },
+    "observers": {
+      "hidden": false,
+      "required": true
+    },
+    "observers_txt": {
+      "hidden": true,
+      "required": false
+    },
+    "visit_date_min": {
+      "type_widget": "date",
+      "attribut_label": "Date du suivi de mortalité",
+      "required": true
+    },
+    "heure_debut_recherche": {
+      "type_widget": "time",
+      "attribut_label": "Heure du début de la recherche",
+      "required": true
+    },
+    "duree_recherche": {
+      "type_widget": "number",
+      "attribut_label": "Durée de la recherche",
+      "definition": "Renseigner la duré en minute",
+      "required": true,
+      "min":0
+    },
+    "longueur_surface": {
+      "type_widget": "number",
+      "attribut_label": "Longueur",
+      "definition": "Longueur totale du côté du carré ou du rayon de la surface de recherche  en mètres, incluant les portions éventuellement non prospectées à l'intérieur.",
+      "required": true,
+      "min":0
+    },
+    "surface_recherche": {
+      "type_widget": "number",
+      "attribut_label": "Surface en mètre carré",
+      "definition": "Surface en mètre carré dans laquelle les cadavres ont été cherchés, n'incluant pas la surface non prospectée.",
+      "required": true,
+      "min":0
+    },
+    "id_nomenclature_forme_surface": {
+      "type_widget": "datalist",
+      "attribut_label": "Forme surface",
+      "api": "nomenclatures/nomenclature/FORME_SURFACE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": true,
+      "multiple": false
+    },
+    "id_nomenclature_type_surface": {
+      "type_widget": "datalist",
+      "attribut_label": "Type de surface",
+      "api": "nomenclatures/nomenclature/TYPE_SURFACE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": true,
+      "multiple": false
+    },
+    "surface_veg": {
+      "type_widget": "number",
+      "attribut_label": "Pourcentage recouvert par de la végétation",
+      "definition": "Pourcentage de la surface prospectée recouverte par de la végétation herbacée à buissonnante, y compris en sous-bois, n'incluant pas la surface non prospectée.",
+      "required": true,
+      "min":0,
+      "max":100
+    },
+    "hauteur_moyenne_veg": {
+      "type_widget": "number",
+      "attribut_label": "Hauteur moyenne de la végétation",
+      "definition": "Estimation de la hauteur moyenne de la végétation herbacée à buissonnante sur l'ensemble de la surface prospectée, incluant les zones de sous-bois si prospectées, en centimètres. Ne pas inclure la surface non prospectée.",
+      "required": true,
+      "min":0
+    },
+    "pourcentage_foret": {
+      "type_widget": "number",
+      "attribut_label": "Pourcentage recouvert par de la forêt",
+      "definition": "Pourcentage de la surface prospectée recouverte par de la forêt, n'incluant pas la surface non prospectée.",
+      "required": true,
+      "min":0,
+      "max":100
+    },
+    "visit_date_max": {
+      "type_widget": "date",
+      "attribut_label": "Date de fin",
+      "hidden": true,
+      "required": true
+    },
+    "id_type_donnee": {
+      "type_widget": "datalist",
+      "attribut_label": "Type de donnée",
+      "api": "nomenclatures/nomenclature/TYPE_DONNEE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": true,
+      "multiple": false,
+      "hidden":true,
+      "default": {
+        "cd_nomenclature": "MORTALITE"
+      }
+    }
+  },
+  "change": [
+    "({objForm, meta}) => {",
+    "const journee_date_fin = objForm.value.visit_date_min;",
+    "if (objForm.controls.visit_date_min.valid) {",
+    "objForm.patchValue({'visit_date_max':journee_date_fin})",
+    "}",
+    "}",
+    ""
+  ]
+}

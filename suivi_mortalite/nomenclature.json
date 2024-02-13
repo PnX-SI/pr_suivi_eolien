@@ -1,0 +1,205 @@
+{
+  "types": [
+    {
+      "mnemonique": "CONTEXTE_SAISIE",
+      "label_default": "Contexte saisie",
+      "definition_default": "Contexte de la saisie de l'éolienne, à savoir s'il s'agit d'une éolienne implantée initialement à la création du parc, si l'éolienne constitue un repowering ou si l'éolienne constitue une extension du parc."
+    },
+    {
+      "mnemonique": "TYPE_LISIERE",
+      "label_default": "Type de lisière",
+      "definition_default": "Type de lisière la plus proche"
+    },
+    {
+      "mnemonique": "TYPE_DONNEE",
+      "label_default": "Type de données récoltées",
+      "definition_default": "Type de données récoltées"
+    },
+    {
+      "mnemonique": "FORME_SURFACE",
+      "label_default": "Forme de la surface",
+      "definition_default": "Forme de la surface de recherche"
+    },
+    {
+      "mnemonique": "TYPE_SURFACE",
+      "label_default": "Type de la surface",
+      "definition_default": "Dureté dominante du substrat sur la surface de prospection"
+    },
+    {
+      "mnemonique": "TYPE_COLISION",
+      "label_default": "Type de colision",
+      "definition_default": "Type de colision"
+    },
+    {
+      "mnemonique": "PRES_CADAVRE",
+      "label_default": "Présence cadavre",
+      "definition_default": "Présence cadavre"
+    },
+    {
+      "mnemonique": "ETAT_CADAVRE",
+      "label_default": "Etat cadavre",
+      "definition_default": "Etat cadavre"
+    },
+    {
+      "mnemonique": "PRES_FORET",
+      "label_default": "Présence forêt",
+      "definition_default": "Présence forêt"
+    }
+  ],
+  "nomenclatures": [
+    {
+      "type": "CONTEXTE_SAISIE",
+      "cd_nomenclature": "INI",
+      "mnemonique": "Initial",
+      "label_default": "Initial",
+      "definition_default": "Initial"
+    },
+    {
+      "type": "CONTEXTE_SAISIE",
+      "cd_nomenclature": "REP",
+      "mnemonique": "Repowering",
+      "label_default": "Repowering",
+      "definition_default": "Repowering"
+    },
+    {
+      "type": "CONTEXTE_SAISIE",
+      "cd_nomenclature": "EXT",
+      "mnemonique": "Extension",
+      "label_default": "Extension",
+      "definition_default": "Extension"
+    },
+    {
+      "type": "TYPE_DONNEE",
+      "cd_nomenclature": "MORTALITE",
+      "mnemonique": "Mortalite",
+      "label_default": "Mortalite",
+      "definition_default": "Mortalité ou présence de cadavre. Le suivi de mortalité des oiseaux et chiroptères sera constitué au minimum de 20 prospections, réparties entre les semaines 20 et 43 (mi mai à octobre), en fonction des risques identifiés dans l'étude d'impact, de la bibliographie et de la connaissance du site. A ce titre, il est rappelé que la période de mi août à fin octobre qui correspond à la période de migration postnuptiale pour l’avifaune et de transits automnaux des chiroptères est considérée comme à cibler en priorité. La période de mai à mi-juillet présente également un intérêt particulier pour les espèces d'oiseaux nicheurs sur le secteur considéré, ainsi que pour les chauves-souris en période de mise-bas."
+    },
+    {
+      "type": "TYPE_DONNEE",
+      "cd_nomenclature": "PERS_CADAVRE",
+      "mnemonique": "Test de persistance",
+      "label_default": "Test de persistance",
+      "definition_default": "Test de persistance de cadavre. Il est recommandé de réaliser 2 tests de persistance des cadavres par suivi, à des périodes distinctes, selon le protocole suivant : 1. Disperser de nouveau les cadavres (entre 3 et 5 par éolienne) sous les différentes éoliennes du parc 2. Suivre la persistance des cadavres par des passages répétés. 3. Au minimum, un retour le lendemain du jour de dispersion, puis 2 par semaines jusqu’à disparition des cadavres ou après une période de 14 jours. "
+    },
+    {
+      "type": "TYPE_DONNEE",
+      "cd_nomenclature": "EFF_OBSERVATEUR",
+      "mnemonique": "Efficacité de l'observateur",
+      "label_default": "Efficacité de l'observateur",
+      "definition_default": "Efficacité de l'observateur. Il est recommandé de réaliser 2 tests d'efficacité de recherche par campagne de suivi annuel, à des périodes distinctes, selon le protocole suivant : 1. Choisir une ou plusieurs éoliennes où les différents types de végétation du parc éolien sont représentés et reporter ces derniers sur une carte. 2. Un 1er opérateur disperse un total de 15 à 20 leurres de tailles différentes sur les différents types de végétation, à l’abri du regard de l’opérateur dont l’efficacité doit être testée. Il note la position des leurres dispersés pour faciliter leur récupération par la suite. 3. Le chercheur prospecte alors le carré échantillon en respectant le protocole (transects)."
+    },
+    {
+      "type": "TYPE_LISIERE",
+      "cd_nomenclature": "HAIE",
+      "mnemonique": "Haie",
+      "label_default": "Haie",
+      "definition_default": "Haie"
+    },
+    {
+      "type": "TYPE_LISIERE",
+      "cd_nomenclature": "FORET",
+      "mnemonique": "Foret",
+      "label_default": "Foret",
+      "definition_default": "Foret"
+    },
+    {
+      "type": "FORME_SURFACE",
+      "cd_nomenclature": "CAR",
+      "mnemonique": "Carré",
+      "label_default": "Carré",
+      "definition_default": "Carré"
+    },
+    {
+      "type": "FORME_SURFACE",
+      "cd_nomenclature": "CER",
+      "mnemonique": "Cercle",
+      "label_default": "Cercle",
+      "definition_default": "Cercle"
+    },
+    {
+      "type": "TYPE_SURFACE",
+      "cd_nomenclature": "M",
+      "mnemonique": "Meuble",
+      "label_default": "Meuble",
+      "definition_default": "Meuble"
+    },
+    {
+      "type": "TYPE_SURFACE",
+      "cd_nomenclature": "C",
+      "mnemonique": "Compact/Imperméable",
+      "label_default": "Compact/Imperméable",
+      "definition_default": "Compact/Imperméable"
+    },
+    {
+      "type": "TYPE_COLISION",
+      "cd_nomenclature": "Ble",
+      "mnemonique": "Blessure visible",
+      "label_default": "Blessure visible",
+      "definition_default": "Blessure visible"
+    },
+    {
+      "type": "TYPE_COLISION",
+      "cd_nomenclature": "Bar",
+      "mnemonique": "barotrauma",
+      "label_default": "barotrauma",
+      "definition_default": "barotrauma"
+    },
+    {
+      "type": "TYPE_COLISION",
+      "cd_nomenclature": "I",
+      "mnemonique": "Indéterminé",
+      "label_default": "Indéterminé",
+      "definition_default": "Indéterminé"
+    },
+    {
+      "type": "ETAT_CADAVRE",
+      "cd_nomenclature": "B",
+      "mnemonique": "Bon",
+      "label_default": "Bon",
+      "definition_default": "Bon"
+    },
+    {
+      "type": "ETAT_CADAVRE",
+      "cd_nomenclature": "D",
+      "mnemonique": "Dégradé",
+      "label_default": "Dégradé",
+      "definition_default": "Dégradé"
+    },
+    {
+      "type": "ETAT_CADAVRE",
+      "cd_nomenclature": "TD",
+      "mnemonique": "Très dégradé",
+      "label_default": "Très dégradé",
+      "definition_default": "Très dégradé"
+    },
+    {
+      "type": "PRES_FORET",
+      "cd_nomenclature": "1",
+      "mnemonique": "Forêt",
+      "label_default": "Forêt",
+      "definition_default": "Forêt"
+    },
+    {
+      "type": "PRES_FORET",
+      "cd_nomenclature": "0",
+      "mnemonique": "Pas de fôret",
+      "label_default": "Pas de fôret",
+      "definition_default": "Pas de fôret"
+    },
+    {
+      "type":"PRES_CADAVRE",
+      "cd_nomenclature": "1",
+      "mnemonique": "Présence d'un cadavre",
+      "label_default": "Présence d'un cadavre",
+      "definition_default": "Présence d'un cadavre"
+    },
+    {
+      "type":"PRES_CADAVRE",
+      "cd_nomenclature": "0",
+      "mnemonique": "Absence de cadavre",
+      "label_default": "Absence de cadavre",
+      "definition_default": "Absence de cadavre durant la prospection"
+    }
+  ]
+}

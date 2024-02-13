@@ -1,0 +1,30 @@
+{
+  "cruved": {
+    "C": 1,
+    "U": 1,
+    "D": 3
+  },
+  "sorts": [
+    {
+      "prop": "last_visit",
+      "dir": "asc"
+    }
+  ],
+  "label": "Gîte",
+  "label_list": "Gîtes",
+  "genre": "M",
+  "geometry_type": "Point",
+  "display_properties": [
+    "base_site_name",
+    "base_site_code",
+    "first_use_date",
+    "id_inventor",
+    "nb_visits"
+  ],
+  "display_list": [
+    "base_site_name",
+    "base_site_code",
+    "last_visit",
+    "id_nomenclature_type_gite"
+  ]
+}

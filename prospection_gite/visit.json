@@ -1,0 +1,37 @@
+{
+  "cruved": { "C": 1, "U": 1, "D": 3 },
+  "display_properties": [
+    "id_base_site",
+    "visit_date_min",
+    "visit_date_max",
+    "nb_observations",
+    "observers",
+    "observers_txt"
+  ],
+  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
+  "map_label_field_name": "base_site_code",
+  "specific": {
+    "observers": {
+      "hidden": false,
+      "required": true
+    },
+    "observers_txt": {
+      "hidden": true,
+      "required": false
+    },
+    "visit_date_min": {
+      "type_widget": "date",
+      "attribut_label": "Date du suivi de mortalité",
+      "required": true
+    }
+  },
+  "change": [
+    "({objForm, meta}) => {",
+    "const journee_date_fin = objForm.value.visit_date_min;",
+    "if (objForm.controls.visit_date_min.valid) {",
+    "objForm.patchValue({'visit_date_max':journee_date_fin})",
+    "}",
+    "}",
+    ""
+  ]
+}

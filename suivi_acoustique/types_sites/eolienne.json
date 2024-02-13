@@ -1,0 +1,84 @@
+{
+    "display_list": [
+      "modele_eolienne",
+      "id_nomenclature_contexte_saisie"
+    ],
+    "display_properties": [
+      "modele_eolienne",
+      "hauteur_eolienne",
+      "longueur_pales",
+      "diametre_rotor",
+      "id_nomenclature_contexte_saisie",
+      "distance_lisiere",
+      "id_nomenclature_type_lisiere"
+    ],
+    "filters": {
+      "inactif": false
+    },
+    "genre": "M",
+    "geometry_type": "Point",
+    "label": "Eolienne",
+    "label_list": "Eoliennes",
+    "sorts": [
+      {
+        "dir": "asc",
+        "prop": "last_visit"
+      }
+    ],
+    "specific": {
+      "diametre_rotor": {
+        "attribut_label": "Diamètre du rotor (m) ",
+        "min": 0,
+        "required": true,
+        "type_widget": "number"
+      },
+      "distance_lisiere": {
+        "attribut_label": "Distance à la lisière arborée (m)",
+        "definition": "Distance en mètres de l'éolienne à la lisière arborée (haie ou lisière forestière >3m) la plus proche.",
+        "min": 0,
+        "required": true,
+        "type_widget": "number"
+      },
+      "hauteur_eolienne": {
+        "attribut_label": "Hauteur éolienne (m)",
+        "min": 0,
+        "required": true,
+        "type_widget": "number"
+      },
+      "id_nomenclature_contexte_saisie": {
+        "api": "nomenclatures/nomenclature/CONTEXTE_SAISIE",
+        "application": "GeoNature",
+        "attribut_label": "Contexte de saisie",
+        "data_path": "values",
+        "keyLabel": "label_fr",
+        "keyValue": "id_nomenclature",
+        "multiple": false,
+        "required": true,
+        "type_util": "nomenclature",
+        "type_widget": "datalist"
+      },
+      "id_nomenclature_type_lisiere": {
+        "api": "nomenclatures/nomenclature/TYPE_LISIERE",
+        "application": "GeoNature",
+        "attribut_label": "Type lisière",
+        "data_path": "values",
+        "keyLabel": "label_fr",
+        "keyValue": "id_nomenclature",
+        "multiple": false,
+        "required": true,
+        "type_util": "nomenclature",
+        "type_widget": "datalist"
+      },
+      "longueur_pales": {
+        "attribut_label": "Longueur pales éolienne (m) ",
+        "min": 0,
+        "required": true,
+        "type_widget": "number"
+      },
+      "modele_eolienne": {
+        "attribut_label": "Modèle de l'éolienne",
+        "required": true,
+        "type_widget": "text"
+      }
+    }
+  }

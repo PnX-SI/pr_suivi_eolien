@@ -1,0 +1,32 @@
+{
+    "display_list": [
+      "id_nomenclature_type_gite"
+    ],
+    "display_properties": [
+      "id_nomenclature_type_gite"
+    ],
+    "genre": "M",
+    "geometry_type": "Point",
+    "label": "Gite",
+    "label_list": "Gites",
+    "sorts": [
+      {
+        "dir": "asc",
+        "prop": "last_visit"
+      }
+    ],
+    "specific": {
+      "id_nomenclature_type_gite": {
+        "type_widget": "datalist",
+        "attribut_label": "Type de gîte",
+        "api": "nomenclatures/nomenclature/TYPE_GITE",
+        "application": "GeoNature",
+        "keyValue": "id_nomenclature",
+        "keyLabel": "label_fr",
+        "data_path": "values",
+        "type_util": "nomenclature",
+        "required": true,
+        "multiple": false
+      }
+    }
+  }

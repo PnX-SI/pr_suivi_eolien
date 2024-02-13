@@ -1,0 +1,96 @@
+{
+  "cruved": { "C": 1, "U": 1, "D": 3 },
+  "display_properties": [
+    "id_nomenclature_type_donnee_gite",
+    "cd_nom",
+    "id_nomenclature_type_effectif",
+    "effectif",
+    "id_nomenclature_presence_juvenile",
+    "nb_juvenils"
+  ],
+  "display_list": ["cd_nom", "effectif", "nb_juvenils"],
+  "map_label_field_name": "base_site_code",
+  "redirect_to_parent": true,
+  "specific": {
+    "id_nomenclature_type_donnee_gite": {
+      "type_widget": "datalist",
+      "attribut_label": "Type de donnée de gîte",
+      "api": "nomenclatures/nomenclature/TYPE_DONNEE_GITE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": true,
+      "multiple": false
+    },
+    "cd_nom": {
+      "type_widget": "taxonomy",
+      "attribut_label": "Espèce observée",
+      "keyValue": "cd_nom",
+      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
+      "multiple": false,
+      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
+      "application": "TaxHub",
+      "type_util": "taxonomy",
+      "required": true
+    },
+    "id_nomenclature_type_effectif": {
+      "type_widget": "datalist",
+      "attribut_label": "Type effectif",
+      "api": "nomenclatures/nomenclature/TYPE_EFFECTIF",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
+      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)",
+      "multiple": false
+    },
+    "effectif": {
+      "type_widget": "number",
+      "attribut_label": "Nombre d'individus",
+      "min": 1,
+      "value": 1,
+      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
+      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)"
+    },
+    "id_nomenclature_presence_juvenile": {
+      "type_widget": "datalist",
+      "attribut_label": "Présence de juvéniles",
+      "api": "nomenclatures/nomenclature/PRESENCE_JUVENILE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
+      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)",
+      "multiple": false
+    },
+    "nb_juvenils": {
+      "type_widget": "number",
+      "attribut_label": "Nombre de juveniles",
+      "min": 1,
+      "value": 1,
+      "required": false,
+      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite) || value.id_nomenclature_presence_juvenile == 804"
+    },
+    "medias": {
+      "hidden": true,
+      "type_widget": "medias",
+      "attribut_label": "Médias",
+      "schema_dot_table": "gn_monitoring.t_observations"
+    }
+  },
+  "change": [
+    "({objForm, meta}) => {",
+    "if ('id_nomenclature_type_donnee_gite' in objForm.controls) {",
+      "if (objForm.controls['id_nomenclature_type_donnee_gite'].value == 650) {",
+        "objForm.patchValue( {'cd_nom':null});",
+        "}",
+    "}",
+    "}"
+  ]
+}

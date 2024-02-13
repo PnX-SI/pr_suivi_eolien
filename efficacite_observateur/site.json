@@ -1,0 +1,37 @@
+{
+  "cruved": {
+    "C": 1,
+    "U": 1,
+    "D": 3
+  },
+  "sorts": [
+    {
+      "prop": "last_visit",
+      "dir": "asc"
+    }
+  ],
+  "label": "Eolienne",
+  "label_list": "Eoliennes",
+  "genre": "F",
+  "geometry_type": "Point",
+  "display_properties": [
+    "base_site_name",
+    "base_site_code",
+    "first_use_date",
+    "id_inventor",
+    "nb_visits"
+  ],
+  "display_list": [
+    "base_site_name",
+    "base_site_code",
+    "last_visit",
+    "modele_eolienne"
+  ],
+  "specific": {
+    "base_site_code": {
+      "type_widget": "text",
+      "attribut_label": "Identifiant administratif de l'éolienne",
+      "required": true
+    }
+  }
+}

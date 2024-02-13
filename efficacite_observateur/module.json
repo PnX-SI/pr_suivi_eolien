@@ -1,0 +1,14 @@
+{
+  "module_label": "Efficacité observateur",
+  "module_desc": "Efficacité observateur",
+  "display_properties": ["module_label", "module_desc"],
+  "specific": {
+  "datasets": {
+    "type_widget": "dataset",
+    "type_util": "dataset",
+    "attribut_label": "Jeu de données",
+    "required": false,
+    "multi_select": true
+  }
+}
+}

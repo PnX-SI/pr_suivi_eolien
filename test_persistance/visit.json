@@ -1,0 +1,81 @@
+{
+  "cruved": { "C": 1, "U": 1, "D": 3 },
+  "display_properties": [
+    "id_base_site",
+    "visit_date_min",
+    "visit_date_max",
+    "nb_observations",
+    "observers",
+    "observers_txt",
+    "taille",
+    "id_nomenclature_type_cadavre",
+    "id_type_donnee"
+  ],
+  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
+  "map_label_field_name": "base_site_code",
+  "specific": {
+    "observers": {
+      "hidden": false,
+      "required": true
+    },
+    "observers_txt": {
+      "hidden": true,
+      "required": false
+    },
+    "visit_date_min": {
+      "type_widget": "date",
+      "attribut_label": "Date du test de persistance",
+      "required": true
+    },
+    "taille": {
+      "type_widget": "number",
+      "attribut_label": "Taille du cadavre (cm)",
+      "definition": "Taille du cadavre en centimètres. Par exemple dans le cas d'un cadavre de poussin ou de chiroptère la mesure doit être prise du sommet du crâne à l'extrémité de la queue.",
+      "required": true,
+      "min":0
+    },
+    "id_nomenclature_type_cadavre": {
+      "type_widget": "datalist",
+      "attribut_label": "Type de cadavre",
+      "api": "nomenclatures/nomenclature/TYPE_CADAVRE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": true,
+      "multiple": false
+    },
+    "visit_date_max": {
+      "type_widget": "date",
+      "attribut_label": "Date de fin",
+      "hidden": true,
+      "required": true
+    },
+    "id_type_donnee": {
+      "type_widget": "datalist",
+      "attribut_label": "Type de donnée",
+      "api": "nomenclatures/nomenclature/TYPE_DONNEE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": true,
+      "multiple": false,
+      "hidden":true,
+      "default": {
+        "cd_nomenclature": "PERS_CADAVRE"
+      }
+    }
+  },
+  "change": [
+    "({objForm, meta}) => {",
+    "const journee_date_fin = objForm.value.visit_date_min;",
+    "if (objForm.controls.visit_date_min.valid) {",
+    "objForm.patchValue({'visit_date_max':journee_date_fin})",
+    "}",
+    "}",
+    ""
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "cruved": { "C": 1, "U": 1, "D": 3 },
+  "display_properties": ["cd_nom", "date_depot_cadavre", "id_nomenclature_presence_foret"],
+  "display_list": ["cd_nom", "date_depot_cadavre", "id_nomenclature_presence_foret"],
+  "map_label_field_name": "base_site_code",
+  "redirect_to_parent": true,
+  "specific": {
+    "cd_nom": {
+      "type_widget": "taxonomy",
+      "attribut_label": "Espèce cadavre",
+      "keyValue": "cd_nom",
+      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
+      "multiple": false,
+      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
+      "application": "TaxHub",
+      "type_util": "taxonomy",
+      "required": true
+    },
+    "date_depot_cadavre": {
+      "type_widget": "date",
+      "attribut_label": "Date de dépôt du cadavre",
+      "required": true
+    },
+    "date_derniere_pres_cad": {
+      "type_widget": "date",
+      "attribut_label": "Date de la dernière présence observée du cadavre",
+      "required": true
+    },
+    "date_premiere_abs_cad": {
+      "type_widget": "date",
+      "attribut_label": "Date de la première absence observée du cadavre",
+      "required": true
+    },
+    "id_nomenclature_presence_foret": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Présence forêt",
+      "code_nomenclature_type": "PRES_FORET",
+      "type_util": "nomenclature",
+      "required": true
+    },
+    "medias": {
+      "hidden": true,
+      "type_widget": "medias",
+      "attribut_label": "Médias",
+      "schema_dot_table": "gn_monitoring.t_observations"
+    }
+  }
+}
