@@ -70,8 +70,8 @@
       "min":0
     },
     "cd_nom": {
-      "required": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
+      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'",
+      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'"
     },
     "liste_cd_nom": {
       "type_widget": "datalist", 
@@ -83,15 +83,15 @@
       "application": "TaxHub",
       "type_util": "taxonomie",
       "required": true,
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
+      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'"
     },
     "id_nomenclature_sex": {
       "type_widget": "nomenclature",
       "attribut_label": "Sexe du cadavre retrouvé.",
       "code_nomenclature_type": "SEXE",
       "type_util": "nomenclature", 
-      "required": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
+      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'",
+      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'"
     },
     "id_nomenclature_presence_foret": {
       "type_widget": "nomenclature",
