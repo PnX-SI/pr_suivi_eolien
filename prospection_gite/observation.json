@@ -1,32 +1,83 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
-    "id_nomenclature_type_donnee_gite",
+    "presence_cadavre",
     "cd_nom",
-    "id_nomenclature_type_effectif",
-    "effectif",
-    "id_nomenclature_presence_juvenile",
-    "nb_juvenils"
+    "count_min",
+    "count_max",
+    "stade_de_vie",
+    "statut_biologique",
+    "sexe",
+    "hauteur_veg",
+    "presence_foret",
+    "type_colision",
+    "ditance_eol",
+    "heure_obs"
   ],
-  "display_list": ["cd_nom", "effectif", "nb_juvenils"],
+  "display_list": ["cd_nom", "count_min", "count_max"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-    "id_nomenclature_type_donnee_gite": {
-      "type_widget": "datalist",
-      "attribut_label": "Type de donnée de gîte",
-      "api": "nomenclatures/nomenclature/TYPE_DONNEE_GITE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false
+    "presence_cadavre": {
+      "type_widget": "select",
+      "attribut_label": "Présence d'un cadavre",
+      "values": [
+        "1: Présence d'un cadavre",
+        "0: Absence de cadavre durant la prospection"
+      ],
+      "default":"0: Absence de cadavre durant la prospection",
+      "required": true
+    },
+    "heure_obs": {
+      "type_widget": "time",
+      "attribut_label": "Heure observation",
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
+    },
+    "ditance_eol": {
+      "type_widget": "number",
+      "attribut_label": "Distance à l'éolienne la plus proche",
+      "definition": "Distance en mètre ",
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')",
+      "min":0
+    },
+    "type_colision": {
+      "type_widget": "select",
+      "attribut_label": "Type de collision",
+      "values": [
+        "Ble: blessure visible",
+        "Bar: barotrauma (identifié par autopsie)",
+        "I: indéterminé."
+      ],
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
+    },
+    "etat_cadavre": {
+      "type_widget": "select",
+      "attribut_label": "Etat du cadavre",
+      "values": ["B: bon", "D: dégradé", "TD: très dégradé"],
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
+    },
+    "presence_foret": {
+      "type_widget": "select",
+      "attribut_label": "Localisation du cadavre en forêt",
+      "values": ["1: forêt", "0: hors forêt"],
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
+    },
+    "hauteur_veg": {
+      "type_widget": "number",
+      "attribut_label": "Hauteur de la végétation",
+      "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')",
+      "min":0
     },
     "cd_nom": {
       "type_widget": "taxonomy",
-      "attribut_label": "Espèce observée",
+      "attribut_label": "Espèces observées",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": false,
@@ -35,47 +86,63 @@
       "type_util": "taxonomy",
       "required": true
     },
-    "id_nomenclature_type_effectif": {
+    "sexe": {
       "type_widget": "datalist",
-      "attribut_label": "Type effectif",
-      "api": "nomenclatures/nomenclature/TYPE_EFFECTIF",
+      "attribut_label": "Sexe",
+      "api": "nomenclatures/nomenclature/SEXE",
       "application": "GeoNature",
       "keyValue": "id_nomenclature",
       "keyLabel": "label_fr",
       "data_path": "values",
       "type_util": "nomenclature",
-      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "multiple": false
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')",
+      "filters": { "cd_nomenclature": ["1", "2", "3"] }
     },
-    "effectif": {
-      "type_widget": "number",
-      "attribut_label": "Nombre d'individus",
-      "min": 1,
-      "value": 1,
-      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)"
-    },
-    "id_nomenclature_presence_juvenile": {
+    "statut_biologique": {
       "type_widget": "datalist",
-      "attribut_label": "Présence de juvéniles",
-      "api": "nomenclatures/nomenclature/PRESENCE_JUVENILE",
+      "attribut_label": "Statut biologique du cadavre.",
+      "api": "nomenclatures/nomenclature/STATUT_BIO",
       "application": "GeoNature",
       "keyValue": "id_nomenclature",
       "keyLabel": "label_fr",
       "data_path": "values",
       "type_util": "nomenclature",
-      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "multiple": false
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')",
+      "filters": {
+        "cd_nomenclature": ["3", "9", "2"]
+      }
     },
-    "nb_juvenils": {
+    "stade_de_vie": {
+      "type_widget": "datalist",
+      "attribut_label": "Stade de vie",
+      "api": "nomenclatures/nomenclature/STADE_VIE",
+      "application": "GeoNature",
+      "keyValue": "id_nomenclature",
+      "keyLabel": "label_fr",
+      "data_path": "values",
+      "type_util": "nomenclature",
+      "required": "({value}) => value.presence_cadavre == \"1: Présence d'un cadavre\"",
+      "hidden": "({value}) => value.presence_cadavre != \"1: Présence d'un cadavre\" ",
+      "filters": {
+        "cd_nomenclature": ["1", "2", "3"]
+      }
+    },
+    "count_min": {
       "type_widget": "number",
-      "attribut_label": "Nombre de juveniles",
-      "min": 1,
-      "value": 1,
-      "required": false,
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite) || value.id_nomenclature_presence_juvenile == 804"
+      "attribut_label": "Dénombrement (minimum)",
+      "min": 0,
+      "value": 0,
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
+    },
+    "count_max": {
+      "type_widget": "number",
+      "attribut_label": "Dénombrement (maximum)",
+      "min": "({value}) => value.count_min",
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
     },
     "medias": {
       "hidden": true,
@@ -83,14 +150,5 @@
       "attribut_label": "Médias",
       "schema_dot_table": "gn_monitoring.t_observations"
     }
-  },
-  "change": [
-    "({objForm, meta}) => {",
-    "if ('id_nomenclature_type_donnee_gite' in objForm.controls) {",
-      "if (objForm.controls['id_nomenclature_type_donnee_gite'].value == 650) {",
-        "objForm.patchValue( {'cd_nom':null});",
-        "}",
-    "}",
-    "}"
-  ]
+  }
 }

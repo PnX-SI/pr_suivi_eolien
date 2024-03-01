@@ -2,25 +2,24 @@
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
     "id_base_site",
+    "type_donnee",
     "visit_date_min",
-    "visit_date_max",
-    "nb_observations",
-    "observers",
-    "observers_txt",
-    "id_type_donnee"
-  ],
-  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
+    "visit_date_max"
+   ],
+  "display_list": ["visit_date_min", "presence_foret", "hauteur_veg"],
   "map_label_field_name": "base_site_code",
   "specific": {
-    "observers": {
-      "hidden": false,
+    "id_dataset": {
+      "hidden": "({meta}) => return(meta.dataset && Object.keys(meta.dataset).length == 1)"
+    },
+    "type_donnee": {
+      "type_widget": "text",
+      "attribut_label": "Type de donnée",
+      "value": "Efficacité de l'observateur",
+      "hidden": true,
       "required": true
     },
-    "observers_txt": {
-      "hidden": true,
-      "required": false
-    },
-    "visit_date_min": {
+     "visit_date_min": {
       "type_widget": "date",
       "attribut_label": "Date du test observateur",
       "required": true
@@ -30,22 +29,6 @@
       "attribut_label": "Date de fin",
       "hidden": true,
       "required": true
-    },
-    "id_type_donnee": {
-      "type_widget": "datalist",
-      "attribut_label": "Type de donnée",
-      "api": "nomenclatures/nomenclature/TYPE_DONNEE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "hidden":true,
-      "default": {
-        "cd_nomenclature": "EFF_OBSERVATEUR"
-      }
     }
   },
   "change": [

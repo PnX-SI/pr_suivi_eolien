@@ -2,80 +2,71 @@
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
     "id_nomenclature_presence_cadavre",
-    "comments",
+    "geometrie",
+    "distance_eolienne",
     "heure_obs",
-    "cd_nom",
-    "count_min",
-    "count_max",
     "hauteur_veg",
-    "id_nomenclature_presence_foret",
-    "id_nomenclature_type_colision",
-    "ditance_eol",
-    "id_nomenclature_etat_cadavre",
+    "observers_txt",
+    "cd_nom",
+    "liste_cd_nom",
     "id_nomenclature_sex",
-    "id_nomenclature_life_stage",
-    "id_nomenclature_bio_status" 
+    "identifiant_cadavre",
+    "id_nomenclature_presence_foret"
   ],
-  "display_list": ["cd_nom", "count_min", "count_max"],
+  "display_list": [ "id_nomenclature_presence_cadavre", "geometrie", "observers_txt","distance_eolienne", "heure_obs", "hauteur_veg", "cd_nom", "liste_cd_nom", "id_nomenclature_sex", "identifiant_cadavre", "id_nomenclature_presence_foret"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
     "id_nomenclature_presence_cadavre": {
-      "type_widget": "datalist",
-      "attribut_label": "Présence cadavre",
-      "api": "nomenclatures/nomenclature/PRES_CADAVRE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
+      "type_widget": "nomenclature",
+      "attribut_label": "Présence de cadavre",
+      "code_nomenclature_type": "PRES_CADAVRE",
       "type_util": "nomenclature",
+      "required": true,
+      "hidden":false
+    },
+    "geometrie": {
+      "type_widget": "txt",
+      "attribut_label": "Géométrie WKT",
+      "definition": "Emplacement géographique du cadavre. Norme ISO/IEC 13249-3:2016. Les points sont les seuls types de géométrie acceptés. Exemple : POINT(5.35 48.41) ",
+      "required": true
+    },
+    "observers": {
+      "hidden": true,
+      "required": false
+    },
+    "observers_txt": {
+      "hidden": false,
+      "required": true
+    },
+    "distance_eolienne": {
+      "type_widget": "number",
+      "attribut_label": "Distance à l'éolienne la plus proche.",
+      "definition": "Distance en mètre ",
       "required":true,
-      "multiple": false
+      "multiple": false,
+      "min":0
     },
     "heure_obs": {
       "type_widget": "time",
-      "attribut_label": "Heure observation",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
-    },
-    "ditance_eol": {
-      "type_widget": "number",
-      "attribut_label": "Distance à l'éolienne la plus proche",
-      "definition": "Distance en mètre ",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "min":0
-    },
-    "id_nomenclature_type_colision": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Type de collision",
-      "code_nomenclature_type": "TYPE_COLISION",
-      "type_util": "nomenclature",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
-    },
-    "id_nomenclature_etat_cadavre": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Etat du cadavre",
-      "code_nomenclature_type": "ETAT_CADAVRE",
-      "type_util": "nomenclature",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
-    },
-    "id_nomenclature_presence_foret": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Présence forêt",
-      "code_nomenclature_type": "PRES_FORET",
-      "type_util": "nomenclature",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
+      "attribut_label": "Heure à laquelle le cadavre a été découvert.",
+      "required":true,
+      "multiple": false
     },
     "hauteur_veg": {
       "type_widget": "number",
       "attribut_label": "Hauteur de la végétation",
       "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817",
+      "required":true,
+      "multiple": false,
+      "min":0
+    },
+    "identifiant_cadavre": {
+      "type_widget": "number",
+      "attribut_label": "Numéro du cadavre servant au test de persitance.",
+      "definition": "En prévision du test de persistance, une ligne par cadavre et pas test devra être renseignée.",
+      "required":true,
+      "multiple": false,
       "min":0
     },
     "cd_nom": {
@@ -90,63 +81,33 @@
       "required": true,
       "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
     },
-    "id_nomenclature_sex": {
-      "type_widget": "datalist",
-      "attribut_label": "Sexe",
-      "api": "nomenclatures/nomenclature/SEXE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "filters": { "cd_nomenclature": ["1", "2", "3"] }
-    },
-    "id_nomenclature_bio_status": {
-      "type_widget": "datalist",
-      "attribut_label": "Statut biologique du cadavre.",
-      "api": "nomenclatures/nomenclature/STATUT_BIO",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "filters": {
-        "cd_nomenclature": ["3", "9", "2"]
-      }
-    },
-    "id_nomenclature_life_stage": {
-      "type_widget": "datalist",
-      "attribut_label": "Stade de vie",
-      "api": "nomenclatures/nomenclature/STADE_VIE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "filters": {
-        "cd_nomenclature": ["1", "2", "3"]
-      }
-    },
-    "count_min": {
-      "type_widget": "number",
-      "attribut_label": "Dénombrement (minimum)",
-      "min": 1,
-      "value": 1,
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
+    "liste_cd_nom": {
+      "type_widget": "multiselect",
+      "attribut_label": "Liste des codes des taxons possibles dans le cas d'un cadavre pour laquelle une identification dans le champs cdNom ne serait possible qu'à la famille.",
+      "keyValue": "cd_nom",
+      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
+      "multiple": true,
+      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
+      "application": "TaxHub",
+      "type_util": "taxonomy",
+      "required": true,
       "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817"
     },
-    "count_max": {
-      "type_widget": "number",
-      "attribut_label": "Dénombrement (maximum)",
-      "required": "({value}) => value.id_nomenclature_presence_cadavre == 817",
-      "hidden": "({value}) => value.id_nomenclature_presence_cadavre != 817",
-      "min": "({value}) => value.count_min"
+    "id_nomenclature_sex": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Sexe du cadavre retrouvé.",
+      "code_nomenclature_type": "SEXE",
+      "type_util": "nomenclature",
+      "hidden": false,
+      "required": true
+    },
+    "id_nomenclature_presence_foret": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Localisation du cadavre ou du leurre en forêt ou non",
+      "code_nomenclature_type": "PRES_FORET",
+      "type_util": "nomenclature",
+      "required": true,
+      "hidden":false
     },
     "medias": {
       "hidden": true,

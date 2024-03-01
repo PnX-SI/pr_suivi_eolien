@@ -45,6 +45,11 @@
       "label_default": "Présence forêt",
       "definition_default": "Présence forêt"
     }
+	{
+      "mnemonique": "SEXE",
+      "label_default": "Sexe",
+      "definition_default": "Sexe du cadavre retrouvé"
+    }
   ],
   "nomenclatures": [
     {
@@ -200,6 +205,27 @@
       "mnemonique": "Absence de cadavre",
       "label_default": "Absence de cadavre",
       "definition_default": "Absence de cadavre durant la prospection"
+    }
+	{
+      "type":"SEXE",
+      "cd_nomenclature": "F",
+      "mnemonique": "Femelle",
+      "label_default": "Femelle",
+      "definition_default": "Femelle"
+    }
+	{
+      "type":"SEXE",
+      "cd_nomenclature": "M",
+      "mnemonique": "Mâle",
+      "label_default": "Mâle",
+      "definition_default": "Mâle"
+    }
+	{
+      "type":"SEXE",
+      "cd_nomenclature": "I",
+      "mnemonique": "Indéterminé",
+      "label_default": "Indéterminé",
+      "definition_default": "Indéterminé"
     }
   ]
 }

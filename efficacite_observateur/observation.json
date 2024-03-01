@@ -1,38 +1,16 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
-    "cd_nom",
-    "taille",
     "id_nomenclature_type_leurre",
+    "numero_leurre",
     "id_nomenclature_couleur_leurre",
     "hauteur_veg",
-    "numero_leurre",
-    "id_nomenclature_efficacite",
-    "id_nomenclature_presence_foret"
-
-  ],
-  "display_list": ["cd_nom", "taille", "id_nomenclature_type_leurre"],
+	  "id_nomenclature_efficacite"
+    ],
+  "display_list": ["id_nomenclature_type_leurre", "numero_leurre", "id_nomenclature_couleur_leurre", "id_nomenclature_efficacite"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-    "cd_nom": {
-      "type_widget": "taxonomy",
-      "attribut_label": "Espèce observée",
-      "keyValue": "cd_nom",
-      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
-      "multiple": false,
-      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
-      "application": "TaxHub",
-      "type_util": "taxonomy",
-      "required": true
-    },
-    "taille": {
-      "type_widget": "number",
-      "attribut_label": "Taille du leurre  (cm)",
-      "definition": "Taille du leurre en centimètres. Par exemple dans le cas d'un cadavre de poussin ou de chiroptère la mesure doit être prise du sommet du crâne à l'extrémité de la queue.",
-      "required": true,
-      "min":0
-    },
     "id_nomenclature_type_leurre": {
       "type_widget": "nomenclature",
       "attribut_label": "Type de leurre",
@@ -40,8 +18,15 @@
       "type_util": "nomenclature",
       "required": true,
       "hidden":false
+    }, 
+    "numero_leurre": {
+      "type_widget": "number",
+      "attribut_label": "Numéro du leurre",
+      "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
+      "required": true,
+      "hidden":false
     },
-    "id_nomenclature_couleur_leurre": {
+     "id_nomenclature_couleur_leurre": {
       "type_widget": "nomenclature",
       "attribut_label": "Couleur du leurre",
       "code_nomenclature_type": "COULEUR_LEURRE",
@@ -53,17 +38,9 @@
     "hauteur_veg": {
       "type_widget": "number",
       "attribut_label": "Hauteur de la végétation",
-      "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
+      "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement du cadavre en centimètres.",
       "required": true,
-      "hidden":false,
       "min":0
-    },
-    "numero_leurre": {
-      "type_widget": "number",
-      "attribut_label": "Numero du leurre",
-      "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
-      "required": true,
-      "hidden":false
     },
     "id_nomenclature_efficacite": {
       "type_widget": "nomenclature",
@@ -72,20 +49,6 @@
       "type_util": "nomenclature",
       "required": true,
       "hidden":false
-    },
-    "id_nomenclature_presence_foret": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Présence forêt",
-      "code_nomenclature_type": "PRES_FORET",
-      "type_util": "nomenclature",
-      "required": true,
-      "hidden":false
-    },
-    "medias": {
-      "hidden": true,
-      "type_widget": "medias",
-      "attribut_label": "Médias",
-      "schema_dot_table": "gn_monitoring.t_observations"
     }
   }
 }
