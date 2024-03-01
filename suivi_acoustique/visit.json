@@ -2,6 +2,7 @@
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
     "id_base_site",
+    "id_dataset",
     "type_etude",
     "identifiant_acoustique",
     "type_replicas",
@@ -9,7 +10,7 @@
     "visit_date_min",
     "visit_date_max",
     "heure_debut",
-    "Heure_fin",
+    "heure_fin",
     "observers_txt",
     "presence_acoustique",
     "evaluation_vent_moyen_tranche",
@@ -50,27 +51,27 @@
       "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
     },
     "type_etude": {
-    "type_widget": "nomenclature",
-    "attribut_label": "Type d'étude, pré ou post-implantation.",
-    "code_nomenclature_type": "TYPE_ETUDE",
-    "type_util": "nomenclature",
-    "required": true,
-    "hidden":false
+        "type_widget": "nomenclature",
+        "attribut_label": "Type d'étude, pré ou post-implantation.",
+        "code_nomenclature_type": "TYPE_ETUDE",
+        "type_util": "nomenclature",
+        "required": true,
+        "hidden":false
     },
     "identifiant_acoustique": {
         "type_widget": "text",
         "attribut_label": "Identifiant du point/transect",
         "definition": "Identifiant du point/transect. Réutiliser dans la mesure du possible les points effectués lors de l'étude Pré-implantatoire en plus des éventuels nouveaux points de relevés.",
-        "required": "({value}) => return (value.type_etude?.includes('PR'))",
-        "hidden": "({value}) => return (value.type_etude?.includes('PO'))"
+        "required": "({value, meta}) => (meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PR'",
+        "hidden": "({value, meta}) => (meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PO'"
     },
     "type_replicas": {
         "type_widget": "nomenclature",
         "attribut_label": "Type d'identifiant du point/transect.",
         "code_nomenclature_type": "TYPE_REPLICAS",
         "type_util": "nomenclature",
-        "required": "({value}) => return (value.type_etude?.includes('PO'))",
-        "hidden": "({value}) => return (value.type_etude?.includes('PR'))"
+        "required": "({value, meta}) => (meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PO'",
+        "hidden": "({value, meta}) => (meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PR'"
     },
     "geometrie_acoustique": {
         "type_widget": "txt",
@@ -118,8 +119,8 @@
         "attribut_label": "Evaluation Vent Moyen Tranche",
         "code_nomenclature_type": "EVALUATION_VENT_MOYEN_TRANCHE",
         "type_util": "nomenclature",
-        "required": "({value}) => return (value.presence_acoustique?.includes('1'))",
-        "hidden": "({value}) => return (!value.type_etude?.includes('1'))"
+        "required": "({value, meta}) => (meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1'",
+        "hidden": "({value, meta}) => (meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature !== '1'"
      },
     "hauteur": {
         "type_widget": "number",
@@ -141,9 +142,9 @@
         "type_widget": "nomenclature",
         "attribut_label": "Position verticale du microphone par rapport à la nacelle.",
         "code_nomenclature_type": "POSITION_NACELLE",
-        "type_util": "nomenclature",
-        "required": "({value}) => return (value.type_hauteur?.includes('Nac'))",
-        "hidden": "({value}) => return (!value.type_hauteur?.includes('Nac'))"
+        "type_util": "nomenclature", 
+        "required": "({value, meta}) => (meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac'",
+        "hidden": "({value, meta}) => (meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature !== 'Nac'"
      },
     "evaluation_pluie_tranche": {
         "type_widget": "nomenclature",
@@ -187,7 +188,7 @@
     },
     "methode_etude": {
         "type_widget": "nomenclature",
-        "attribut_label": "Type de support",
+        "attribut_label": "Méthode étude",
         "code_nomenclature_type": "METHODE_ETUDE",
         "type_util": "nomenclature",
         "hidden": false,
@@ -195,7 +196,7 @@
      },
     "type_enregistrement": {
         "type_widget": "nomenclature",
-        "attribut_label": "Type de support",
+        "attribut_label": "Type d'enregistrement",
         "code_nomenclature_type": "TYPE_ENREGISTREMENT",
         "type_util": "nomenclature",
         "hidden": false,

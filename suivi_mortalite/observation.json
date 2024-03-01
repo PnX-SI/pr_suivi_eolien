@@ -13,7 +13,7 @@
     "identifiant_cadavre",
     "id_nomenclature_presence_foret"
   ],
-  "display_list": [ "id_nomenclature_presence_cadavre", "geometrie", "observers_txt","distance_eolienne", "heure_obs", "hauteur_veg", "cd_nom", "liste_cd_nom", "id_nomenclature_sex", "identifiant_cadavre", "id_nomenclature_presence_foret"],
+  "display_list": [ "id_nomenclature_presence_cadavre", "observers_txt", "distance_eolienne", "heure_obs", "cd_nom", "liste_cd_nom", "id_nomenclature_sex", "identifiant_cadavre", "id_nomenclature_presence_foret"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
@@ -70,8 +70,8 @@
       "min":0
     },
     "cd_nom": {
-      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'",
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'"
+      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1'",
+      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
     },
     "liste_cd_nom": {
       "type_widget": "datalist", 
@@ -83,15 +83,15 @@
       "application": "TaxHub",
       "type_util": "taxonomie",
       "required": true,
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'"
+      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
     },
     "id_nomenclature_sex": {
       "type_widget": "nomenclature",
       "attribut_label": "Sexe du cadavre retrouvé.",
       "code_nomenclature_type": "SEXE",
       "type_util": "nomenclature", 
-      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'",
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature === '0'"
+      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1'",
+      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
     },
     "id_nomenclature_presence_foret": {
       "type_widget": "nomenclature",
@@ -110,8 +110,8 @@
   },
   "change": [
     "({objForm, meta}) => {",
-      "if (objForm.controls['id_nomenclature_presence_cadavre'].value != 817) {",
-        "objForm.patchValue( {'cd_nom':null});",
+      "if ( (meta.nomenclatures[objForm.controls['id_nomenclature_presence_cadavre'].value] || {}).cd_nomenclature == '1' ) {",
+        "objForm.patchValue( {'cd_nom':null, 'liste_cd_nom': null, 'id_nomenclature_sex':null });",
     "}",
     "}"
   ]
