@@ -4,9 +4,10 @@
     "id_base_site",
     "type_donnee",
     "visit_date_min",
-    "visit_date_max"
+    "visit_date_max",
+    "hauteur_veg"
    ],
-  "display_list": ["visit_date_min", "presence_foret", "hauteur_veg"],
+  "display_list": ["visit_date_min", "hauteur_veg"],
   "map_label_field_name": "base_site_code",
   "specific": {
     "id_dataset": {
@@ -30,6 +31,13 @@
       "hidden": true,
       "required": true
     }
+    "hauteur_veg": {
+      "type_widget": "number",
+      "attribut_label": "Hauteur moyenne de la végétation",
+      "definition": "Estimation de la hauteur moyenne de la végétation herbacée à buissonnante sur l'ensemble de la surface prospectée, incluant les zones de sous-bois si prospectées, en centimètres.",
+      "required": true,
+      "min":0
+    },
   },
   "change": [
     "({objForm, meta}) => {",
