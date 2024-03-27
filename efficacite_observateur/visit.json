@@ -30,14 +30,14 @@
       "attribut_label": "Date de fin",
       "hidden": true,
       "required": true
-    }
+    },
     "hauteur_veg": {
       "type_widget": "number",
       "attribut_label": "Hauteur moyenne de la végétation",
       "definition": "Estimation de la hauteur moyenne de la végétation herbacée à buissonnante sur l'ensemble de la surface prospectée, incluant les zones de sous-bois si prospectées, en centimètres.",
       "required": true,
       "min":0
-    },
+    }
   },
   "change": [
     "({objForm, meta}) => {",
