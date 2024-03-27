@@ -9,7 +9,7 @@
     "PresenceJuvenils",
     "NombreJuvenils"
   ],
-  "display_list": ["observers_txt", "count_min", PresenceJuvenils"],
+  "display_list": ["observers_txt", "count_min", "PresenceJuvenils"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
@@ -52,7 +52,7 @@
       "type_effectif": {
       "type_widget": "nomenclature",
       "attribut_label": "Méthode de comptage",
-      "code_nomenclature_type": "TYPEEFFECTIF",
+      "code_nomenclature_type": "TYPE_EFFECTIF",
       "type_util": "nomenclature",
       "required": true,
       "hidden":false
