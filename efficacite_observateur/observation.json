@@ -2,15 +2,17 @@
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
     "id_nomenclature_type_leurre",
-    "numero_leurre",
+    "identifiant_Leurre",
     "id_nomenclature_couleur_leurre",
+    "taille_leurre",
     "hauteur_veg",
 	  "id_nomenclature_efficacite"
     ],
-  "display_list": ["id_nomenclature_type_leurre", "numero_leurre", "id_nomenclature_couleur_leurre", "id_nomenclature_efficacite"],
+  "display_list": ["id_nomenclature_type_leurre", "identifiant_Leurre", "id_nomenclature_efficacite"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
+    
     "id_nomenclature_type_leurre": {
       "type_widget": "nomenclature",
       "attribut_label": "Type de leurre",
@@ -19,10 +21,10 @@
       "required": true,
       "hidden":false
     }, 
-    "numero_leurre": {
+    "identifiant_Leurre": {
       "type_widget": "number",
-      "attribut_label": "Numéro du leurre",
-      "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
+      "attribut_label": "Numéro du leurre servant au test observateur.",
+      "definition": " Pour le test observateur, une ligne par leurre et par test devra être renseignée.",
       "required": true,
       "hidden":false
     },
@@ -34,6 +36,13 @@
       "type_util": "nomenclature",
       "required": true,
       "hidden":false
+    },
+    "taille_leurre": {
+      "type_widget": "number",
+      "attribut_label": "Taille du leurre en centimètres. ",
+      "definition": "Précision : dans le cas d'un cadavre de poussin ou de chiroptère la mesure doit être prise du sommet du crâne à l'extrémité de la queue.",
+      "required": true,
+      "min":0
     },
     "hauteur_veg": {
       "type_widget": "number",
@@ -51,4 +60,5 @@
       "hidden":false
     }
   }
+}
 }
