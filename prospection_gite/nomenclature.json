@@ -1,111 +1,91 @@
 {
-  "types": [
-	{
-      "mnemonique": "PRESENCE_JUVENILE",
-      "label_default": "Présence juvénile",
-      "definition_default": ""
+	"types": [
+    {
+      "mnemonique": "TYPE_DONNEE_GITE",
+      "label_default": "TypeDonneeGite",
+      "definition_default": "Type de données récoltées sur la localisation du gîte prospecté."
+    },
+	{ 
+	  "mnemonique": "TYPE_GITE",
+      "label_default": "TypeGite",
+      "definition_default": "Type de gîte prospecté."
     },
 	{
       "mnemonique": "TYPE_EFFECTIF",
-      "label_default": "Type effectif",
-      "definition_default": ""
+      "label_default": "TypeEffectif",
+      "definition_default": "Méthode de comptage."
     },
-	{
-      "mnemonique": "TYPE_DONNEE_GITE",
-      "label_default": "Type Donnée Gite",
-      "definition_default": "Type de données récoltées sur la localisation du gîte prospecté."
-    },
-	{
-      "mnemonique": "TYPE_GITE",
-      "label_default": "Type Gite",
-      "definition_default": "Type de données récoltées sur la localisation du gîte prospecté."
-    }
   ],
   "nomenclatures": [
-	  {
-      "type":"PRESENCE_JUVENILE",
-      "cd_nomenclature": "PRESENCE",
-      "mnemonique": "Oui",
-      "label_default": "Présence juvénile",
-      "definition_default": ""
-      },
-	  {
-      "type":"PRESENCE_JUVENILE",
-      "cd_nomenclature": "ABSENCE",
-      "mnemonique": "Non",
-      "label_default": "Absence juvénile",
-      "definition_default": ""
-      },
-	  {
-      "type":"TYPE_EFFECTIF",
-      "cd_nomenclature": "ESTIMATION",
-      "mnemonique": "EST",
-      "label_default": "Estimation de l'effectif",
-      "definition_default": ""
-      },
-	   {
-      "type":"TYPE_EFFECTIF",
-      "cd_nomenclature": "EFFECTIF_REEL",
-      "mnemonique": "EFF",
-      "label_default": "Effectif réel",
-      "definition_default": "Effectif réel ou précis à l'individu près"
-      },
-		{
+     {
       "type":"TYPE_DONNEE_GITE",
-      "cd_nomenclature": "CADAVRE",
-      "mnemonique": "Cadavre",
-      "label_default": "Cadavre",
-      "definition_default": "Un ou plusieurs cadavres considérés comme appartenant à la même espèce."
+      "cd_nomenclature": "TYPE_DONNEE_GITE_1",
+      "mnemonique": "cad",
+      "label_default": "Un ou plusieurs cadavres considérés comme appartenant à la même espèce.",
+      "definition_default": ""
       },
 	  		{
       "type":"TYPE_DONNEE_GITE",
-      "cd_nomenclature": "INDICE_PRESENCE",
-      "mnemonique": "Indice de presence",
-      "label_default": "Indice de presence",
-      "definition_default": "Un ou plusieurs indices de présence"
+      "cd_nomenclature": "TYPE_DONNEE_GITE_2",
+      "mnemonique": "IndPres",
+      "label_default": "Un ou plusieurs indices de présence.",
+      "definition_default": ""
       },
 		{
-      "type":"TYPE_DONNEE_GITE",
-      "cd_nomenclature": "ABSENCE",
-      "mnemonique": "Absence",
-      "label_default": "Absence",
-      "definition_default": "Absence de chiroptère ou d'indice."
+      "type":"TYPEDONNEEGITE",
+      "cd_nomenclature": "TYPE_DONNEE_GITE_3",
+      "mnemonique": "Abs",
+      "label_default": "Absence de chiroptère ou d'indice.",
+      "definition_default": ""
       },
 	  	{
       "type":"TYPE_GITE",
-      "cd_nomenclature": "ARTIFICIEL",
+      "cd_nomenclature": "TYPE_GITE_1",
       "mnemonique": "Art",
-      "label_default": "Artificiel",
-      "definition_default": "Artificiel visant les chiroptères."
+      "label_default": "Artificiel visant les chiroptères.",
+      "definition_default": ""
       },
 	  	{
       "type":"TYPE_GITE",
-      "cd_nomenclature": "BATI",
+      "cd_nomenclature": "TYPE_GITE_2",
       "mnemonique": "Bat",
-      "label_default": "Bâti",
+      "label_default": "Bâti.",
       "definition_default": ""
       },
 	  	  	{
       "type":"TYPE_GITE",
-      "cd_nomenclature": "ARBRE",
+      "cd_nomenclature": "TYPE_GITE_3",
       "mnemonique": "Arb",
       "label_default": "Arbre.",
       "definition_default": ""
       },
 	  	  	{
       "type":"TYPE_GITE",
-      "cd_nomenclature": "INFRA",
+      "cd_nomenclature": "TYPE_GITE_4",
       "mnemonique": "Inf",
       "label_default": "Infrastructures autres tels que les ponts.",
       "definition_default": ""
       },
 	  	  	{
-      "type":"TYPE_GITE",
-      "cd_nomenclature": "SOUTERRAINS",
+      "type":"TYPEGITE",
+      "cd_nomenclature": "TYPE_GITE_5",
       "mnemonique": "Sou",
       "label_default": "Souterrains incluant toutes les cavités naturelles ou artificielles.",
       "definition_default": ""
-      }
-
+      },
+	  	  	{
+	  "type":"TYPE_EFFECTIF",
+      "cd_nomenclature": "TYPE_EFFECTIF_1",
+      "mnemonique": "Est",
+      "label_default": "Estimation de l'effectif.",
+      "definition_default": ""
+      },
+	  	  	  	{
+	  "type":"TYPE_EFFECTIF",
+      "cd_nomenclature": "TYPE_EFFECTIF_2",
+      "mnemonique": "Eff",
+      "label_default": "Effectif réel ou précis à l’individu près.",
+      "definition_default": ""
+      },
   ]
 }
