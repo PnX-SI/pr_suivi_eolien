@@ -32,7 +32,7 @@
       "definition_default": ""
       },
 		{
-      "type":"TYPEDONNEEGITE",
+      "type":"TYPE_DONNEE_GITE",
       "cd_nomenclature": "TYPE_DONNEE_GITE_3",
       "mnemonique": "Abs",
       "label_default": "Absence de chiroptère ou d'indice.",
@@ -67,7 +67,7 @@
       "definition_default": ""
       },
 	  	  	{
-      "type":"TYPEGITE",
+      "type":"TYPE_GITE",
       "cd_nomenclature": "TYPE_GITE_5",
       "mnemonique": "Sou",
       "label_default": "Souterrains incluant toutes les cavités naturelles ou artificielles.",
