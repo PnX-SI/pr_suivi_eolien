@@ -24,7 +24,7 @@
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "type_util": "taxonomie",
-      "required": true,
+      "required": true
     },
      "liste_cd_nom": {
       "type_widget": "datalist", 
@@ -35,7 +35,7 @@
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "type_util": "taxonomie",
-      "required": true,
+      "required": true
     },
     "comments": {
       "hidden": true,
