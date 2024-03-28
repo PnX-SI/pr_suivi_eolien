@@ -2,17 +2,17 @@
 	"types": [
     {
       "mnemonique": "TYPE_DONNEE_GITE",
-      "label_default": "TypeDonneeGite",
+      "label_default": "Type_Donnee_Gite",
       "definition_default": "Type de données récoltées sur la localisation du gîte prospecté."
     },
 	{ 
 	  "mnemonique": "TYPE_GITE",
-      "label_default": "TypeGite",
+      "label_default": "Type_Gite",
       "definition_default": "Type de gîte prospecté."
     },
 	{
       "mnemonique": "TYPE_EFFECTIF",
-      "label_default": "TypeEffectif",
+      "label_default": "Type_Effectif",
       "definition_default": "Méthode de comptage."
     },
   ],
