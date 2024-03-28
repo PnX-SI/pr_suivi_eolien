@@ -3,12 +3,9 @@
   "display_properties": [
     "heure_obs",
     "cd_nom",
-    "liste_cd_nom",
-    "count_min",
-    "count_max",
-    "score"
+    "liste_cd_nom"
   ],
-  "display_list": ["heure_obs", "cd_nom", "liste_cd_nom", "count_min", "count_max", "score"],
+  "display_list": ["heure_obs", "cd_nom", "liste_cd_nom"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
@@ -20,47 +17,37 @@
       },
      "cd_nom": {
       "type_widget": "taxonomy",
-      "attribut_label": "Espèces observées",
+      "attribut_label": "Espèce ou groupe taxonomique observé (cdNom)",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": false,
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
-      "type_util": "taxonomy",
-      "required": true
+      "type_util": "taxonomie",
+      "required": true;
     },
-    "liste_cd_nom": {
-        "type_widget": "multiselect",
-        "attribut_label": "Liste des codes des taxons possibles dans le cas d'un cadavre pour laquelle une identification dans le champs cdNom ne serait possible qu'à la famille.",
-        "keyValue": "cd_nom",
-        "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
-        "multiple": true,
-        "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
-        "application": "TaxHub",
-        "type_util": "taxonomy",
-        "required": true
-      },
-   "count_min": {
-      "type_widget": "number",
-      "attribut_label": "Dénombrement (minimum)",
-      "min": 0,
-      "value": 0,
-      "required": "({value}) => return (value.presence_cadavre?.includes('1'))",
-      "hidden": "({value}) => return (!value.presence_cadavre?.includes('1'))"
+     "liste_cd_nom": {
+      "type_widget": "datalist", 
+      "attribut_label": "Liste des espèces possibles dans le cas d'un cadavre pour laquelle une identification à l'espèce n'est pas possible.",
+      "keyValue": "cd_nom",
+      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
+      "multiple": true,
+      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
+      "application": "TaxHub",
+      "type_util": "taxonomie",
+      "required": true,
     },
-    "count_max": {
-      "type_widget": "number",
-      "attribut_label": "Dénombrement (maximum)",
-      "min": "({value}) => value.count_min",
-      "required": "({value}) => return (value.presence_cadavre?.includes('1'))",
-      "hidden": "({value}) => return (!value.presence_cadavre?.includes('1'))"
-    },
-    "score": {
+    "comments": {
       "hidden": true,
-      "type_widget": "number",
-        "attribut_label": "Indice de confiance fourni par le logiciel d'identification automatique.",
-        "definition": "Fournir l'indice de confiance associé à la séquence. L'indice doit être compris entre 0 et 1, ainsi pour les logiciels fournissant un indice compris entre 0 et 10 par exemple, l'indice doit être divisé par 10.",
-        "required": false
+      "type_widget": "txt",
+      "attribut_label": "Commentaire",
+      "schema_dot_table": "gn_monitoring.t_observations"
+    }
+    "medias": {
+      "hidden": true,
+      "type_widget": "medias",
+      "attribut_label": "Médias",
+      "schema_dot_table": "gn_monitoring.t_observations"
     }
   }
 }
