@@ -6,7 +6,7 @@
     "id_nomenclature_couleur_leurre",
     "taille_leurre",
     "hauteur_veg",
-	  "id_nomenclature_efficacite"
+    "id_nomenclature_efficacite"
     ],
   "display_list": ["id_nomenclature_type_leurre", "identifiant_Leurre", "id_nomenclature_efficacite"],
   "map_label_field_name": "base_site_code",
