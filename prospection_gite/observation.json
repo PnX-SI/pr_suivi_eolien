@@ -1,6 +1,7 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
+    "observers_txt",
     "heure_obs",
     "cd_nom",
     "liste_cd_nom",
@@ -9,11 +10,10 @@
     "PresenceJuvenils",
     "NombreJuvenils"
   ],
-  "display_list": ["observers_txt", "count_min", "PresenceJuvenils"],
+  "display_list": ["observers_txt", "cd_nom","count_min", "PresenceJuvenils"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-
     "observers_txt": {
       "hidden": false,
       "required": true
@@ -24,10 +24,9 @@
       "required": "({value}) => value.presence_cadavre?.includes('1')",
       "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
     },
- 
     "cd_nom": {
       "type_widget": "taxonomy",
-      "attribut_label": "",
+      "attribut_label": "Espèce ou groupe taxonomique observé (cdNom)",
       "keyValue": "cd_nom unique le plus précis pouvant être remonté",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": false,
@@ -45,11 +44,9 @@
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "type_util": "taxonomie",
-      "required": true,
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
+      "required": true
     },
-
-      "type_effectif": {
+    "type_effectif": {
       "type_widget": "nomenclature",
       "attribut_label": "Méthode de comptage",
       "code_nomenclature_type": "TYPE_EFFECTIF",
@@ -57,7 +54,6 @@
       "required": true,
       "hidden":false
     },
-    
     "count_min": {
       "type_widget": "number",
       "attribut_label": "Effectif minimum",
@@ -73,15 +69,12 @@
       "required": "({value}) => value.presence_cadavre?.includes('1')",
       "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
     },
-
-    
-      "PresenceJuvenils": {
+    "PresenceJuvenils": {
        "type_widget": "radio",
        "attribut_label": "Présence de juvéniles ?",
        "values": ["Oui", "Non"]
     },
-
-     "NombreJuvenils": {
+    "NombreJuvenils": {
       "type_widget": "number",
       "attribut_label": "Nombre de juvéniles",
       "min": 0,
@@ -89,9 +82,6 @@
       "required": "({value}) => value.PresenceJuvenils?.includes('Oui')",
       "hidden": "({value}) => !value.PresenceJuvenils?.includes('Oui')"
     },
-    },
-    
-    
     "medias": {
       "hidden": true,
       "type_widget": "medias",
