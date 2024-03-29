@@ -21,7 +21,7 @@
     },
      "visit_date_min": {
       "type_widget": "date",
-      "attribut_label": "Date du test observateur",
+      "attribut_label": "Date du test de persistance",
       "required": true
     },
     "visit_date_max": {
