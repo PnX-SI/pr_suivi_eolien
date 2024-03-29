@@ -1,5 +1,4 @@
-{
-  "cruved": { "C": 1, "U": 1, "D": 3 },
+{ 
   "display_properties": [
     "id_nomenclature_type_leurre",
     "identifiant_Leurre",
@@ -7,49 +6,52 @@
     "taille_leurre",
     "hauteur_veg",
     "id_nomenclature_efficacite"
-    ],
-  "display_list": ["id_nomenclature_type_leurre", "identifiant_Leurre", "id_nomenclature_efficacite"],
+  ],
+  "display_list": [
+    "id_nomenclature_type_leurre",
+    "identifiant_Leurre",
+    "id_nomenclature_efficacite"
+  ],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-    
     "id_nomenclature_type_leurre": {
       "type_widget": "nomenclature",
       "attribut_label": "Type de leurre",
       "code_nomenclature_type": "TYPE_LEURRE",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
-    }, 
+      "hidden": false
+    },
     "identifiant_Leurre": {
       "type_widget": "number",
       "attribut_label": "Numéro du leurre servant au test observateur.",
       "definition": " Pour le test observateur, une ligne par leurre et par test devra être renseignée.",
       "required": true,
-      "hidden":false
+      "hidden": false
     },
-     "id_nomenclature_couleur_leurre": {
+    "id_nomenclature_couleur_leurre": {
       "type_widget": "nomenclature",
       "attribut_label": "Couleur du leurre",
       "code_nomenclature_type": "COULEUR_LEURRE",
-      "definition":"La couleur sélectionnée doit être celle qui se rapproche le plus en moyenne de celles proposées.",
+      "definition": "La couleur sélectionnée doit être celle qui se rapproche le plus en moyenne de celles proposées.",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     },
     "taille_leurre": {
       "type_widget": "number",
       "attribut_label": "Taille du leurre en centimètres. ",
       "definition": "Précision : dans le cas d'un cadavre de poussin ou de chiroptère la mesure doit être prise du sommet du crâne à l'extrémité de la queue.",
       "required": true,
-      "min":0
+      "min": 0
     },
     "hauteur_veg": {
       "type_widget": "number",
       "attribut_label": "Hauteur de la végétation",
       "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement du cadavre en centimètres.",
       "required": true,
-      "min":0
+      "min": 0
     },
     "id_nomenclature_efficacite": {
       "type_widget": "nomenclature",
@@ -57,7 +59,7 @@
       "code_nomenclature_type": "EFFICACITE",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     },
     "id_nomenclature_presence_foret": {
       "type_widget": "nomenclature",
@@ -65,7 +67,7 @@
       "code_nomenclature_type": "PRES_FORET",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     },
     "medias": {
       "hidden": true,
@@ -74,5 +76,4 @@
       "schema_dot_table": "gn_monitoring.t_observations"
     }
   }
-}
-}
+} 

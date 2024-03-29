@@ -1,12 +1,15 @@
-{
-  "cruved": { "C": 1, "U": 1, "D": 3 },
+{ 
   "display_properties": [
     "id_base_site",
     "visit_date_min",
     "visit_date_max",
-    "type_donnee_gite",
+    "type_donnee_gite"
   ],
-  "display_list": ["visit_date_min", "nb_observations", "TypeDonneeGite"],
+  "display_list": [
+    "visit_date_min",
+    "nb_observations",
+    "type_donnee_gite"
+  ],
   "map_label_field_name": "base_site_code",
   "specific": {
     "id_dataset": {
@@ -20,16 +23,16 @@
     "visit_date_max": {
       "type_widget": "date",
       "attribut_label": "Date de fin de la visite",
-     "required": false
+      "required": false
     },
     "type_donnee_gite": {
       "type_widget": "nomenclature",
       "attribut_label": "type_donnee_gite",
       "code_nomenclature_type": "TYPE_DONNEE_GITE",
-      "definition":"Type de données récoltées.",
+      "definition": "Type de données récoltées.",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     }
   },
   "change": [
