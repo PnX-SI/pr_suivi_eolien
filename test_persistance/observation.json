@@ -1,5 +1,4 @@
 {
-  "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
     "id_nomenclature_type_cadavre",
     "taille_cadavre",
@@ -8,9 +7,18 @@
     "date_derniere_pres_cadavre",
     "date_premiere_abs_cadavre",
     "hauteur_veg",
-     "id_nomenclature_presence_foret"
+    "id_nomenclature_presence_foret"
   ],
-   "display_list": ["id_nomenclature_type_cadavre", "taille_cadavre", "identifiant_cadavre", "date_depot_cadavre", "date_derniere_pres_cadavre", "date_premiere_abs_cadavre","hauteur_veg","id_nomenclature_presence_foret"],
+  "display_list": [
+    "id_nomenclature_type_cadavre",
+    "taille_cadavre",
+    "identifiant_cadavre",
+    "date_depot_cadavre",
+    "date_derniere_pres_cadavre",
+    "date_premiere_abs_cadavre",
+    "hauteur_veg",
+    "id_nomenclature_presence_foret"
+  ],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
@@ -20,21 +28,21 @@
       "code_nomenclature_type": "TYPE_CADAVRE",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     },
     "taille_cadavre": {
       "type_widget": "number",
       "attribut_label": "Taille du cadavre ou du leurre en centimètres.",
       "definition": "Par exemple dans le cas d'un cadavre de poussin ou de chiroptère la mesure doit être prise du sommet du crâne à l'extrémité de la queue.",
       "required": true,
-      "min":0
+      "min": 0
     },
     "identifiant_cadavre": {
       "type_widget": "number",
       "attribut_label": "Numéro du cadavre servant au test de persitance.",
       "definition": "Pour un test de persistance, une ligne par cadavre et pas test devra être renseignée.",
       "required": true,
-      "min":0
+      "min": 0
     },
     "date_depot_cadavre": {
       "type_widget": "date",
@@ -56,7 +64,7 @@
       "attribut_label": "Hauteur de la végétation",
       "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement du cadavre en centimètres.",
       "required": true,
-      "min":0
+      "min": 0
     },
     "id_nomenclature_presence_foret": {
       "type_widget": "nomenclature",
@@ -64,7 +72,7 @@
       "code_nomenclature_type": "PRES_FORET",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     }
   }
 }
