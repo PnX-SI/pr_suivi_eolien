@@ -1,5 +1,5 @@
 {
-  "cruved": { "C": 1, "U": 1, "D": 3 },
+  
   "display_properties": [
     "id_nomenclature_presence_cadavre",
     "observers_txt",
@@ -13,7 +13,17 @@
     "identifiant_cadavre",
     "id_nomenclature_presence_foret"
   ],
-  "display_list": [ "id_nomenclature_presence_cadavre", "observers_txt", "distance_eolienne", "heure_obs", "cd_nom", "liste_cd_nom", "id_nomenclature_sex", "identifiant_cadavre", "id_nomenclature_presence_foret"],
+  "display_list": [
+    "id_nomenclature_presence_cadavre",
+    "observers_txt",
+    "distance_eolienne",
+    "heure_obs",
+    "cd_nom",
+    "liste_cd_nom",
+    "id_nomenclature_sex",
+    "identifiant_cadavre",
+    "id_nomenclature_presence_foret"
+  ],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
@@ -23,15 +33,13 @@
       "code_nomenclature_type": "PRES_CADAVRE",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
-    },
-    "observers": {
-      "hidden": true,
-      "required": false
-    },
+      "hidden": false
+    }, 
     "observers_txt": {
-      "hidden": false,
-      "required": true
+      "type_widget": "text",
+      "attribut_label": "Observateur(s) (extérieur)",
+      "required": true,
+      "hidden": false
     },
     "geometrie": {
       "type_widget": "text",
@@ -43,46 +51,38 @@
       "type_widget": "number",
       "attribut_label": "Distance à l'éolienne la plus proche.",
       "definition": "Distance en mètre ",
-      "required":true,
+      "required": true,
       "multiple": false,
-      "min":0
+      "min": 0
     },
     "heure_obs": {
       "type_widget": "time",
       "attribut_label": "Heure à laquelle le cadavre a été découvert.",
-      "required":true,
+      "required": true,
       "multiple": false
     },
     "hauteur_veg": {
       "type_widget": "number",
       "attribut_label": "Hauteur de la végétation",
       "definition": "Hauteur de la végétation herbacée à buissonnante à l'emplacement  du cadavre en centimètres",
-      "required":true,
+      "required": true,
       "multiple": false,
-      "min":0
+      "min": 0
     },
     "identifiant_cadavre": {
       "type_widget": "number",
       "attribut_label": "Numéro du cadavre servant au test de persitance.",
       "definition": "En prévision du test de persistance, une ligne par cadavre et pas test devra être renseignée.",
-      "required":true,
+      "required": true,
       "multiple": false,
-      "min":0
+      "min": 0
     },
     "cd_nom": {
-      "type_widget": "taxonomy",
-      "attribut_label": "",
-      "keyValue": "cd_nom unique le plus précis pouvant être remonté",
-      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
-      "multiple": false,
-      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
-      "application": "TaxHub",
-      "type_util": "taxonomie",
-      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1'",
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
+      "required": "({value, meta}) => ((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')",
+      "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')"
     },
     "liste_cd_nom": {
-      "type_widget": "datalist", 
+      "type_widget": "datalist",
       "attribut_label": "Liste des codes des taxons possibles dans le cas d'un cadavre pour laquelle une identification dans le champ cdNom ne serait possible qu'à la famille.",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
@@ -90,14 +90,14 @@
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "type_util": "taxonomie",
-      "required": true,
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
+      "required": "({value, meta}) => ((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')",
+      "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')"
     },
     "id_nomenclature_sex": {
       "type_widget": "nomenclature",
       "attribut_label": "Sexe du cadavre retrouvé.",
       "code_nomenclature_type": "SEXE",
-      "type_util": "nomenclature", 
+      "type_util": "nomenclature",
       "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1'",
       "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
     },
@@ -107,7 +107,7 @@
       "code_nomenclature_type": "PRES_FORET",
       "type_util": "nomenclature",
       "required": true,
-      "hidden":false
+      "hidden": false
     },
     "medias": {
       "hidden": true,
@@ -117,9 +117,9 @@
     }
   },
   "change": [
-    "({objForm, meta}) => {",
-      "if ( (meta.nomenclatures[objForm.controls['id_nomenclature_presence_cadavre'].value] || {}).cd_nomenclature == '1' ) {",
-        "objForm.patchValue( {'cd_nom':null, 'liste_cd_nom': null, 'id_nomenclature_sex':null });",
+    "({objForm, meta}) => {", 
+    "if ( !((meta.nomenclatures[objForm.controls['id_nomenclature_presence_cadavre'].value] || {}).cd_nomenclature == '1')) {",
+    "objForm.patchValue( {'cd_nom': { cd_nom: 186233, nom_valide: 'Chiroptera Blumenbach, 1779',nom_vern: null }, 'liste_cd_nom': [ ], 'id_nomenclature_sex':null });",
     "}",
     "}"
   ]
