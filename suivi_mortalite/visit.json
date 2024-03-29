@@ -7,10 +7,10 @@
     "visit_date_max",
     "longueur_surface",
     "surface_recherche",
+    "id_nomenclature_forme_surface",
     "duree_recherche",
     "heure_debut_recherche",
     "id_nomenclature_type_surface",
-    "id_nomenclature_forme_surface",
     "surface_veg",
     "hauteur_moyenne_veg",
     "pourcentage_foret",
@@ -54,6 +54,15 @@
       "required": true,
       "min":0
     },
+    "id_nomenclature_forme_surface": { 
+      "type_widget": "nomenclature",
+      "attribut_label": "Forme de la surface",
+      "code_nomenclature_type": "FORME_SURFACE",
+      "definition":"Forme de la surface de recherche.",
+      "type_util": "nomenclature",
+      "required": true,
+      "hidden":false
+    },
     "duree_recherche": {
       "type_widget": "number",
       "attribut_label": "Durée de la recherche",
@@ -71,15 +80,6 @@
       "attribut_label": "Type de surface",
       "code_nomenclature_type": "TYPE_SURFACE",
       "definition":"Dureté dominante du substrat sur la surface de prospection.",
-      "type_util": "nomenclature",
-      "required": true,
-      "hidden":false
-    },
-    "id_nomenclature_forme_surface": { 
-      "type_widget": "nomenclature",
-      "attribut_label": "Forme de la surface",
-      "code_nomenclature_type": "FORME_SURFACE",
-      "definition":"Forme de la surface de recherche.",
       "type_util": "nomenclature",
       "required": true,
       "hidden":false
