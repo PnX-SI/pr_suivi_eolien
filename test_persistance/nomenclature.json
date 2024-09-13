@@ -2,92 +2,92 @@
   "types": [
     {
       "mnemonique": "TYPE_DONNEE",
-      "label_default": "TYPE_DONNEE",
+      "label_default": "Type de donnée",
       "definition_default": "Type de données récoltées."
     },
     {
       "mnemonique": "TYPE_LEURRE",
-      "label_default": "TYPE_LEURRE",
+      "label_default": "Type de leurre",
       "definition_default": "Type de leurre servant au test observateur."
     },
     {
       "mnemonique": "TYPE_CADAVRE",
-      "label_default": "TYPE_CADAVREavre",
+      "label_default": "Type de cadavre",
       "definition_default": "Type de cadavre servant au test de persistance."
     },
     {
       "mnemonique": "PRES_FORET",
-      "label_default": "PRES_FORET",
+      "label_default": "Présence de forêt",
       "definition_default": "Localisation du cadavre ou du leurre en forêt ou non."
     }
   ],
   "nomenclatures": [
     {
       "type": "TYPE_DONNEE",
-      "cd_nomenclature": "TYPE_DONNEE_1",
+      "cd_nomenclature": "Mortalite",
       "mnemonique": "Mortalite",
       "label_default": "Mortalité",
       "definition_default": "Mortalité ou présence de cadavre. Le suivi de mortalité des oiseaux et chiroptères sera constitué au minimum de 20 prospections, réparties entre les semaines 20 et 43 (mi mai à octobre), en fonction des risques identifiés dans l'étude d'impact, de la bibliographie et de la connaissance du site. A ce titre, il est rappelé que la période de mi août à fin octobre qui correspond à la période de migration postnuptiale pour l’avifaune et de transits automnaux des chiroptères est considérée comme à cibler en priorité. La période de mai à mi-juillet présente également un intérêt particulier pour les espèces d'oiseaux nicheurs sur le secteur considéré, ainsi que pour les chauves-souris en période de mise-bas."
     },
     {
       "type": "TYPE_DONNEE",
-      "cd_nomenclature": "TYPE_DONNEE_2",
+      "cd_nomenclature": "PersCadavre",
       "mnemonique": "PersCadavre",
       "label_default": "Persistance de cadavre",
       "definition_default": "Test de persistance de cadavre. Il est recommandé de réaliser 2 tests de persistance des cadavres par suivi, à des périodes distinctes, selon le protocole suivant : 1. Disperser de nouveau les cadavres (entre 3 et 5 par éolienne) sous les différentes éoliennes du parc 2. Suivre la persistance des cadavres par des passages répétés. 3. Au minimum, un retour le lendemain du jour de dispersion, puis 2 par semaines jusqu’à disparition des cadavres ou après une période de 14 jours. "
     },
     {
       "type": "TYPE_DONNEE",
-      "cd_nomenclature": "TYPE_DONNEE_3",
+      "cd_nomenclature": "EffObservateur",
       "mnemonique": "EffObservateur",
       "label_default": "Efficacité de l'observateur",
       "definition_default": "Efficacité de l'observateur. Il est recommandé de réaliser 2 tests d'efficacité de recherche par campagne de suivi annuel, à des périodes distinctes, selon le protocole suivant : 1. Choisir une ou plusieurs éoliennes où les différents types de végétation du parc éolien sont représentés et reporter ces derniers sur une carte. 2. Un 1er opérateur disperse un total de 15 à 20 leurres de tailles différentes sur les différents types de végétation, à l’abri du regard de l’opérateur dont l’efficacité doit être testée. Il note la position des leurres dispersés pour faciliter leur récupération par la suite. 3. Le chercheur prospecte alors le carré échantillon en respectant le protocole (transects)."
     },
     {
       "type": "TYPE_LEURRE",
-      "cd_nomenclature": "TYPE_LEURRE_1",
+      "cd_nomenclature": "Bio",
       "mnemonique": "Bio",
       "label_default": "Matériel biologique mort",
       "definition_default": "Matériel biologique mort (oiseau ou chiroptère)"
     },
     {
       "type": "TYPE_LEURRE",
-      "cd_nomenclature": "TYPE_LEURRE_2",
+      "cd_nomenclature": "Art",
       "mnemonique": "Art",
       "label_default": "Matériel artificiel",
       "definition_default": "matériel artificiel (tissu, plastique…)"
     },
     {
       "type": "TYPE_CADAVRE",
-      "cd_nomenclature": "TYPE_CADAVRE_1",
+      "cd_nomenclature": "Chi",
       "mnemonique": "Chi",
       "label_default": "Chiroptère",
       "definition_default": ""
     },
     {
       "type": "TYPE_CADAVRE",
-      "cd_nomenclature": "TYPE_CADAVRE_2",
+      "cd_nomenclature": "Ois",
       "mnemonique": "Ois",
       "label_default": "Oiseau",
       "definition_default": ""
     },
     {
       "type": "TYPE_CADAVRE",
-      "cd_nomenclature": "TYPE_CADAVRE_3",
+      "cd_nomenclature": "Aut",
       "mnemonique": "Aut",
       "label_default": "Autre",
       "definition_default": ""
     },
     {
       "type": "PRES_FORET",
-      "cd_nomenclature": "PRES_FORET_1",
+      "cd_nomenclature": "1",
       "mnemonique": "1",
       "label_default": "Fôret",
       "definition_default": ""
     },
     {
       "type": "PRES_FORET",
-      "cd_nomenclature": "PRES_FORET_2",
+      "cd_nomenclature": "0",
       "mnemonique": "0",
       "label_default": "Pas de fôret",
       "definition_default": ""
