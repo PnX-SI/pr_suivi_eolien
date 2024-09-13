@@ -16,11 +16,6 @@
       "definition_default": "Forme de la surface de recherche."
     },
     {
-      "mnemonique": "SEXE",
-      "label_default": "Sexe",
-      "definition_default": "Sexe du cadavre retrouvé."
-    },
-    {
       "mnemonique": "TYPE_SURFACE",
       "label_default": "TYPE_SURFACE",
       "definition_default": "Dureté dominante du substrat sur la surface de prospection."
@@ -79,27 +74,6 @@
       "cd_nomenclature": "FORME_SURFACE_2",
       "mnemonique": "Cer",
       "label_default": "Cercle",
-      "definition_default": ""
-    },
-    {
-      "type": "SEXE",
-      "cd_nomenclature": "SEXE_1",
-      "mnemonique": "F",
-      "label_default": "Femelle",
-      "definition_default": ""
-    },
-    {
-      "type": "SEXE",
-      "cd_nomenclature": "SEXE_2",
-      "mnemonique": "M",
-      "label_default": "Mâle",
-      "definition_default": ""
-    },
-    {
-      "type": "SEXE",
-      "cd_nomenclature": "SEXE_3",
-      "mnemonique": "I",
-      "label_default": "Indéterminé",
       "definition_default": ""
     },
     {
