@@ -47,6 +47,7 @@
     "visit_date_max": {
       "type_widget": "date",
       "attribut_label": "Date de fin",
+      "hidden": true,
       "required": true
     },
     "longueur_surface": {
