@@ -26,5 +26,6 @@
     "base_site_code",
     "last_visit",
     "id_nomenclature_type_gite"
-  ]
+  ],
+  "specific": {}
 }

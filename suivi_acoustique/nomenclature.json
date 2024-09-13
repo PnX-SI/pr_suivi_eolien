@@ -94,15 +94,15 @@
   "nomenclatures": [
     {
       "type": "TYPE_ETUDE",
-      "cd_nomenclature": "Pre implantation",
-      "mnemonique": "PR",
+      "mnemonique": "Pre implantation",
+      "cd_nomenclature": "PR",
       "label_default": "Etude pré-implantation",
       "definition_default": ""
     },
     {
       "type": "TYPE_ETUDE",
-      "cd_nomenclature": "Post implantantion",
-      "mnemonique": "PO",
+      "mnemonique": "Post implantantion",
+      "cd_nomenclature": "PO",
       "label_default": "Etude post-implantation",
       "definition_default": ""
     },
@@ -150,7 +150,7 @@
     },
     {
       "type": "TYPE_HAUTEUR",
-      "cd_nomenclature": "TYPE_REPLICAS_1",
+      "cd_nomenclature": "NaC",
       "mnemonique": "Nacelle",
       "label_default": "Nacelle",
       "definition_default": ""

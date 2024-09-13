@@ -1,536 +1,412 @@
 {
-  "cruved": { "C": 1, "U": 1, "D": 3 },
-  "display_properties": [
-    "id_base_site",
-    "visit_date_min",
-    "visit_date_max",
-    "heure_debut_recherche",
-    "heure_fin_recherche",
-    "nb_observations",
-    "observers",
-    "observers_txt",
-    "id_nomenclature_type_etude",
-    "id_nomenclature_type_replicas",
-    "id_nomenclature_presence_acoustique",
-    "hauteur",
-    "id_nomenclature_type_hauteur",
-    "id_nomenclature_position_nacelle",
-    "id_nomenclature_evaluation_pluie_tranche",
-    "pluie_tranche",
-    "id_nomenclature_evaluation_vent_moy_tranche",
-    "vitesse_moy_tranche",
-    "id_nomenclature_evaluation_vitesse_eolienne",
-    "vitesse_eolienne",
-    "id_nomenclature_methode_etude",
-    "id_nomenclature_type_enregistrement",
-    "id_nomenclature_type_identification",
-    "id_nomenclature_methode_identification",
-    "id_nomenclature_logiciel_id_auto",
-    "autre_logiciel_id_auto",
-    "id_nomenclature_type_canal",
-    "decoupage_fichier",
-    "duree_decoupage_fichier",
-    "age_micro",
-    "freq_min",
-    "freq_max",
-    "id_nomenclature_trigger",
-    "trigger_decibel",
-    "id_nomenclature_gain",
-    "gain",
-    "intervalle_cris_max",
-    "id_nomenclature_modele_materiel",
-    "modele_autre",
-    "id_nomenclature_type_duree",
-    "score"
-  ],
-  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
-  "map_label_field_name": "base_site_code",
-  "specific": {
-    "observers": {
-      "hidden": false,
-      "required": true
+    "display_properties": [
+        "id_base_site",
+        "id_dataset",
+        "type_etude",
+        "identifiant_acoustique",
+        "type_replicas",
+        "geometrie_acoustique",
+        "visit_date_min",
+        "visit_date_max",
+        "heure_debut",
+        "heure_fin",
+        "observers_txt",
+        "presence_acoustique",
+        "evaluation_vent_moyen_tranche",
+        "hauteur",
+        "type_hauteur",
+        "position_nacelle",
+        "evaluation_pluie_tranche",
+        "pluie_tranche",
+        "vent_moyen_tranche",
+        "evaluation_vitesse_eolienne",
+        "vitesse_eolienne",
+        "methode_etude",
+        "type_enregistrement",
+        "type_identification",
+        "methode_identification",
+        "logiciel_id_auto",
+        "autre_logiciel_auto",
+        "type_canal",
+        "decoupage_fichier",
+        "duree_decoupage_fichier",
+        "age_micro",
+        "frequence_min",
+        "frequence_max",
+        "trigger",
+        "trigger_decibel",
+        "gain",
+        "gain_value",
+        "interval_cris_max",
+        "modele_materiel",
+        "modele_autre",
+        "type_duree",
+        "score"
+    ],
+    "display_list": [
+        "id_base_site",
+        "type_etude",
+        "identifiant_acoustique",
+        "type_replicas",
+        "geometrie_acoustique",
+        "visit_date_min",
+        "visit_date_max",
+        "heure_debut",
+        "Heure_fin",
+        "observers_txt",
+        "presence_acoustique",
+        "evaluation_vent_moyen_tranche",
+        "hauteur",
+        "type_hauteur",
+        "position_nacelle",
+        "evaluation_pluie_tranche",
+        "pluie_tranche",
+        "vent_moyen_tranche",
+        "evaluation_vitesse_eolienne",
+        "vitesse_eolienne",
+        "methode_etude",
+        "type_enregistrement",
+        "type_identification",
+        "methode_identification",
+        "logiciel_id_auto",
+        "autre_logiciel_auto",
+        "type_canal",
+        "decoupage_fichier",
+        "duree_decoupage_fichier",
+        "age_micro",
+        "frequence_min",
+        "frequence_max",
+        "trigger",
+        "trigger_decibel",
+        "gain",
+        "gain_value",
+        "interval_cris_max",
+        "modele_materiel",
+        "modele_autre",
+        "type_duree",
+        "score"
+    ],
+    "map_label_field_name": "base_site_code",
+    "specific": {
+        "id_dataset": {
+            "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
+        },
+        "type_etude": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Type d'étude, pré ou post-implantation.",
+            "code_nomenclature_type": "TYPE_ETUDE",
+            "type_util": "nomenclature",
+            "required": true,
+            "hidden": false
+        },
+        "identifiant_acoustique": {
+            "type_widget": "text",
+            "attribut_label": "Identifiant du point/transect",
+            "definition": "Identifiant du point/transect. Réutiliser dans la mesure du possible les points effectués lors de l'étude Pré-implantatoire en plus des éventuels nouveaux points de relevés.",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PR')",
+            "hidden": "({value, meta}) =>   !((meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PR')"
+        },
+        "type_replicas": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Type d'identifiant du point/transect.",
+            "code_nomenclature_type": "TYPE_REPLICAS",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PO')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_etude] || {}).cd_nomenclature !== 'PO')"
+        },
+        "geometrie_acoustique": {
+            "type_widget": "text",
+            "attribut_label": "Géométrie WKT",
+            "definition": "Géométrie du point/transect acoustique. Norme ISO/IEC 13249-3:2016. Les points et lignes sont les seuls types de géométrie acceptés. Exemple : POINT(5.35 48.41); LINESTRING(0.80 48.50, 0.88 48.54, 0.90 49.01).",
+            "required": true
+        },
+        "visit_date_min": {
+            "type_widget": "date",
+            "attribut_label": "Date de début de la nuit étudiée.",
+            "required": true
+        },
+        "visit_date_max": {
+            "type_widget": "date",
+            "attribut_label": "Date de fin",
+            "hidden": true,
+            "required": true
+        },
+        "heure_debut": {
+            "type_widget": "time",
+            "attribut_label": "Heure de début du point fixe ou du transect.",
+            "required": true
+        },
+        "heure_fin": {
+            "type_widget": "time",
+            "attribut_label": "Heure de fin du point fixe ou du transect.",
+            "required": true
+        },
+        "observers": {
+            "required": false,
+            "hidden": true
+        },
+        "observers_txt": {
+            "required": false,
+            "hidden": true
+        },
+        "presence_acoustique": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Presence Acoustique",
+            "code_nomenclature_type": "PRESENCE_ACOUSTIQUE",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "evaluation_vent_moyen_tranche": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Evaluation Vent Moyen Tranche",
+            "code_nomenclature_type": "EVALUATION_VENT_MOYEN_TRANCHE",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1')"
+        },
+        "hauteur": {
+            "type_widget": "number",
+            "attribut_label": "Hauteur du microphone au-dessus du sol en mètres.",
+            "min": 0,
+            "value": 0,
+            "hidden": false,
+            "required": true
+        },
+        "type_hauteur": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Type de support",
+            "code_nomenclature_type": "TYPE_HAUTEUR",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "position_nacelle": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Position verticale du microphone par rapport à la nacelle.",
+            "code_nomenclature_type": "POSITION_NACELLE",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac')"
+        },
+        "evaluation_pluie_tranche": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Etat fonctionnel de la station de mesure de la quantité de précipitation en nacelle.",
+            "code_nomenclature_type": "EVALUATION_PLUIE_TRANCHE",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac' && (meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac' && (meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1')"
+        },
+        "pluie_tranche": {
+            "type_widget": "number",
+            "attribut_label": "Quantité de précipitation sur la tranche horaire en mm/h.",
+            "min": 0,
+            "value": 0,
+            "required": "({value, meta}) => ((meta.nomenclatures[value.evaluation_pluie_tranche] || {}).cd_nomenclature == 'F')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.evaluation_pluie_tranche] || {}).cd_nomenclature == 'F')"
+        },
+        "vent_moyen_tranche": {
+            "type_widget": "number",
+            "attribut_label": "Vitesse de vent moyenne sur la tranche horaire en m/s.",
+            "min": 0,
+            "value": 0,
+            "required": "({value, meta}) => ((meta.nomenclatures[value.evaluation_pluie_tranche] || {}).cd_nomenclature == 'F')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.evaluation_pluie_tranche] || {}).cd_nomenclature == 'F')"
+        },
+        "evaluation_vitesse_eolienne": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Etat fonctionnel de la station de mesure de la vitesse de rotation des pales.",
+            "code_nomenclature_type": "EVALUATION_VITESSE_EOLIENNE",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac' && (meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1' && (meta.nomenclatures[value.type_etude] || {}).cd_nomenclature == 'PO')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_hauteur] || {}).cd_nomenclature == 'Nac' && (meta.nomenclatures[value.presence_acoustique] || {}).cd_nomenclature == '1' && (meta.nomenclatures[value.type_etude] || {}).cd_nomenclature == 'PO')"
+        },
+        "vitesse_eolienne": {
+            "type_widget": "number",
+            "attribut_label": "Vitesse de vent moyenne sur la tranche horaire en m/s.",
+            "min": 0,
+            "value": 0,
+            "required": "({value, meta}) => ((meta.nomenclatures[value.evaluation_vitesse_eolienne] || {}).cd_nomenclature == 'F')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.evaluation_vitesse_eolienne] || {}).cd_nomenclature == 'F')"
+        },
+        "methode_etude": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Méthode étude",
+            "code_nomenclature_type": "METHODE_ETUDE",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "type_enregistrement": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Type d'enregistrement",
+            "code_nomenclature_type": "TYPE_ENREGISTREMENT",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "type_identification": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Méthode d'identification pour les écoutes manuelles.",
+            "code_nomenclature_type": "TYPE_IDENTIFICATION",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EM')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EM')"
+        },
+        "methode_identification": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Méthode d'identification informatique.",
+            "code_nomenclature_type": "METHODE_IDENTIFICATION",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "logiciel_id_auto": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Méthode d'identification informatique.",
+            "code_nomenclature_type": "LOGICIEL_ID_AUTO",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "autre_logiciel_auto": {
+            "type_widget": "txt",
+            "attribut_label": "Nom du logiciel d'identification automatique utilisé",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.logiciel_id_auto] || {}).cd_nomenclature == 'AU')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.logiciel_id_auto] || {}).cd_nomenclature == 'AU')"
+        },
+        "type_canal": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Indiquer si l'enregistrement autonome a été réalisé en stéréo ou en mono.",
+            "code_nomenclature_type": "TYPE_CANAL",
+            "type_util": "nomenclature",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')"
+        },
+        "decoupage_fichier": {
+            "type_widget": "radio",
+            "values": [
+                "Oui",
+                "Non"
+            ],
+            "attribut_label": "Découpe du fichier.",
+            "definition": "Indique si les fichiers ont été découpés selon une durée définie (exemple: 5 secondes communément utilisé pour standardiser le nombre de contacts).",
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA' || (meta.nomenclatures[value.type_identification] || {}).cd_nomenclature == 'VI')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA' || (meta.nomenclatures[value.type_identification] || {}).cd_nomenclature == 'VI')"
+        },
+        "duree_decoupage_fichier": {
+            "type_widget": "number",
+            "attribut_label": "Longueur du fichier exprimée en nombre de secondes (s) uniquement.",
+            "min": 0,
+            "value": 0,
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')"
+        },
+        "age_micro": {
+            "type_widget": "number",
+            "attribut_label": "Age micro",
+            "definition": "Nombre de semaines cumulées d’activité du microphone en extérieur depuis l'achat",
+            "required": true,
+            "min": 0
+        },
+        "frequence_min": {
+            "type_widget": "number",
+            "attribut_label": "Fréquence minimale enregistrement (Khz)",
+            "definition": "Frequence minimale d'enregistrement (Khz)",
+            "required": true,
+            "min": 0
+        },
+        "frequence_max": {
+            "type_widget": "number",
+            "attribut_label": "Fréquence maximale enregistrement (Khz)",
+            "definition": "Frequence maximale d'enregistrement (Khz)",
+            "required": true,
+            "min": 0
+        },
+        "trigger": {
+            "type_widget": "radio",
+            "attribut_label": "Déclencheur d'enregistrement",
+            "definition": "Utilisation d'un déclencheur (Trigger) de l'enregistrement (champ obligatoire)",
+            "values": [
+                "Oui",
+                "Non"
+            ],
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')"
+        },
+        "trigger_decibel": {
+            "type_widget": "number",
+            "attribut_label": "Seuil de déclenchement en décibel (dB)",
+            "definition": "Seuil de déclenchement en décibel (dB)",
+            "required": "({value}) =>  (value.trigger == 'Oui')",
+            "hidden": "({value}) =>  !(value.trigger = 'Oui')",
+            "min": 0
+        },
+        "gain": {
+            "type_widget": "radio",
+            "attribut_label": "Utilisation d'un gain pré-ampli.",
+            "definition": "Indique si une augmentation du gain du pré-ampli a été utilisée",
+            "values": [
+                "Oui",
+                "Non"
+            ],
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')"
+        },
+        "gain_value": {
+            "type_widget": "number",
+            "attribut_label": "Valeur du gain (dB)",
+            "definition": "Indique la valeur du gain en décibel (dB) si un gain a été utilisé",
+            "required": "({value}) =>  (value.gain == 'Oui')",
+            "hidden": "({value}) =>   !(value.gain = 'Oui')",
+            "min": 0
+        },
+        "interval_cris_max": {
+            "type_widget": "number",
+            "attribut_label": "Intervalle maximum entre deux cris.",
+            "definition": "Intervalle maximum entre deux cris en nombre de secondes (s)",
+            "min": 0,
+            "required": "({value, meta}) => ((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')",
+            "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.type_enregistrement] || {}).cd_nomenclature == 'EA')"
+        },
+        "modele_materiel": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Modèle du matériel acoustique utilisé.",
+            "code_nomenclature_type": "MODELE_MATERIEL",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "modele_autre": {
+            "type_widget": "text",
+            "attribut_label": "Autre modèle",
+            "definition": "Modèle de matériel utilisé dans le cas où ce dernier n'apparait pas dans la liste des modèles. Saisir le modèle et la marque séparés d'une virgule. Exemple : SM2BAT, Wildlife Acoustics",
+            "required": "({value}) =>  (value.modele_materiel == '45')",
+            "hidden": "({value}) =>   !(value.modele_materiel == '45')"
+        },
+        "type_duree": {
+            "type_widget": "nomenclature",
+            "attribut_label": "Catégorie de durée d'enregistrement ou d'écoute sur le point/transect.",
+            "code_nomenclature_type": "TYPE_DUREE",
+            "type_util": "nomenclature",
+            "hidden": false,
+            "required": true
+        },
+        "score": {
+            "type_widget": "number",
+            "attribut_label": "Indice de confiance fourni par le logiciel d'identification automatique.",
+            "definition": "Fournir l'indice de confiance associé à la séquence. L'indice doit être compris entre 0 et 1, ainsi pour les logiciels fournissant un indice compris entre 0 et 10 par exemple, l'indice doit être divisé par 10.",
+            "required": false,
+            "hidden": false
+        }
     },
-    "observers_txt": {
-      "hidden": true,
-      "required": false
-    },
-    "visit_date_min": {
-      "type_widget": "date",
-      "attribut_label": "Date de début de nuit étudiée",
-      "required": true
-    },
-    "id_nomenclature_type_etude": {
-      "type_widget": "datalist",
-      "attribut_label": "Type d'étude",
-      "api": "nomenclatures/nomenclature/TYPE_ETUDE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition": "Type d'étude, pré ou post-implantation."
-    },
-    "id_nomenclature_type_replicas": {
-      "type_widget": "datalist",
-      "attribut_label": "Type réplicas",
-      "api": "nomenclatures/nomenclature/TYPE_REPLICAS",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition": "Type d'identifiant du point/transect.",
-      "required": "({value, meta}) => value.id_nomenclature_type_etude ==  671",
-      "hidden": "({value, meta}) => value.id_nomenclature_type_etude !=  671"
-    },
-    "heure_debut_recherche": {
-      "type_widget": "time",
-      "attribut_label": "Heure de début",
-      "definition":"Heure de début du point fixe ou du transect",
-      "required": true
-    },
-    "heure_fin_recherche": {
-      "type_widget": "time",
-      "attribut_label": "Heure de fin",
-      "definition":"Heure de fin du point fixe ou du transect",
-      "required": true
-    },
-    "id_nomenclature_presence_acoustique": {
-      "type_widget": "datalist",
-      "attribut_label": "Présence acoustique",
-      "api": "nomenclatures/nomenclature/PRESENCE_ACOUSTIQUE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition": "Indique si au moins un contact acoustique a été relevé durant le point ou le transect dans sa globalité. Ce champ permet en cas d'absence totale d'activité de saisir une absence de chiroptères."
-    },
-    "hauteur": {
-      "type_widget": "number",
-      "attribut_label": "Hauteur ",
-      "definition": "Hauteur du microphone au-dessus du sol en mètres",
-      "required": true,
-      "min":0
-    },
-    "id_nomenclature_type_hauteur": {
-      "type_widget": "datalist",
-      "attribut_label": "Type de support",
-      "api": "nomenclatures/nomenclature/TYPE_HAUTEUR",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition": "Type de support"
-    },
-    "id_nomenclature_position_nacelle": {
-      "type_widget": "datalist",
-      "attribut_label": "Position nacelle",
-      "api": "nomenclatures/nomenclature/POSITION_NACELLE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": "({value, meta}) => [678].includes(value.id_nomenclature_type_hauteur)",
-      "hidden": "({value, meta}) => ![678].includes(value.id_nomenclature_type_hauteur)",
-      "multiple": false,
-      "definition": "Position verticale du microphone par rapport à la nacelle pour les enregistrements en nacelle"
-    },
-    "id_nomenclature_evaluation_pluie_tranche": {
-      "type_widget": "datalist",
-      "attribut_label": "Evaluation pluie tranche",
-      "api": "nomenclatures/nomenclature/EVALUATION_PLUIE_TRANCHE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition": "Indique si la station de mesure de la quantité de précipitation en nacelle est existante et fonctionnelle.",
-      "required":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const nac = 678",
-        "const matmes = 679",
-        "const matf = 680",
-        "if ([nac,matmes,matf].includes(value.id_nomenclature_type_hauteur) && value.id_nomenclature_presence_acoustique != id_pres_acoustisque  ) {",
-          "return false",
+    "change": [
+        "({objForm, meta}) => {",
+        "const journee_date_fin = objForm.value.visit_date_min;",
+        "if (objForm.controls.visit_date_min.valid) {",
+        "objForm.patchValue({'visit_date_max':journee_date_fin})",
         "}",
-          "return true",
-        "}"
-      ],
-      "hidden":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const nac = 678",
-        "const matmes = 679",
-        "const matf = 680",
-        "if ([nac,matmes,matf].includes(value.id_nomenclature_type_hauteur) && value.id_nomenclature_presence_acoustique != id_pres_acoustisque  ) {",
-          "return true",
         "}",
-          "return false",
-        "}"
-      ]
-    },
-    "pluie_tranche": {
-      "type_widget": "number",
-      "attribut_label": "Quantité de précipitation (mm/h) ",
-      "definition": "Quantité de précipitation sur la tranche horaire en mm/h",
-      "required": "({value, meta}) => [ 686].includes(value.id_nomenclature_evaluation_pluie_tranche)",
-      "hidden": "({value, meta}) => ![ 686].includes(value.id_nomenclature_evaluation_pluie_tranche)",
-      "min":0
-    },
-    "id_nomenclature_evaluation_vent_moy_tranche": {
-      "type_widget": "datalist",
-      "attribut_label": "Evaluation vent moyen tranche",
-      "api": "nomenclatures/nomenclature/EVALUATION_VENT_MOYEN_TRANCHE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition":"Indique si la station de mesure de la vitesse de vent en nacelle est existante et fonctionnelle.",
-      "required":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const nac = 678",
-        "const matmes = 679",
-        "const matf = 680",
-        "if ([nac,matmes,matf].includes(value.id_nomenclature_type_hauteur) && value.id_nomenclature_presence_acoustique != id_pres_acoustisque  ) {",
-          "return false",
-        "}",
-          "return true",
-        "}"
-      ],
-      "hidden":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const nac = 678",
-        "const matmes = 679",
-        "const matf = 680",
-        "if ([nac,matmes,matf].includes(value.id_nomenclature_type_hauteur) && value.id_nomenclature_presence_acoustique != id_pres_acoustisque  ) {",
-          "return true",
-        "}",
-          "return false",
-        "}"
-      ]
-    },
-    "vitesse_moy_tranche": {
-      "type_widget": "number",
-      "attribut_label": "Vitesse de vent moyenne (m/s)",
-      "definition": "Vitesse de vent moyenne sur la tranche horaire en m/s",
-      "required": "({value, meta}) => [ 689].includes(value.id_nomenclature_evaluation_vent_moy_tranche)",
-      "hidden": "({value, meta}) => ![ 689].includes(value.id_nomenclature_evaluation_vent_moy_tranche)",
-      "min":0
-    },
-    "id_nomenclature_evaluation_vitesse_eolienne": {
-      "type_widget": "datalist",
-      "attribut_label": "Vitesse éolienne (km/h)",
-      "api": "nomenclatures/nomenclature/EVALUATION_VITESSE_EOLIENNE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition":"Indique si la mesure de la vitesse de rotation des pales est disponible et fonctionnelle.",
-      "required":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const id_type_etude_po = 671",
-        "const nac = 678",
-        "const matf = 680",
-        "if ([nac,matf].includes(value.id_nomenclature_type_hauteur) && value.id_nomenclature_presence_acoustique != id_pres_acoustisque && value.id_nomenclature_type_etude !=  id_type_etude_po ) {",
-          "return false",
-        "}",
-          "return true",
-        "}"
-      ],
-      "hidden":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const id_type_etude_po = 671",
-        "const nac = 678",
-        "const matf = 680",
-        "if ([nac,matf].includes(value.id_nomenclature_type_hauteur) && value.id_nomenclature_presence_acoustique != id_pres_acoustisque && value.id_nomenclature_type_etude !=  id_type_etude_po ) {",
-          "return true",
-        "}",
-          "return false",
-        "}"
-      ]
-    },
-    "vitesse_eolienne": {
-      "type_widget": "number",
-      "attribut_label": "Vitesse éolienne (km/h)",
-      "definition": "Vitesse de rotation en bout de pale au moment de l'enregistrement en km/h",
-      "required": "({value, meta}) => [ 692].includes(value.id_nomenclature_evaluation_vitesse_eolienne)",
-      "hidden": "({value, meta}) => ![ 692].includes(value.id_nomenclature_evaluation_vitesse_eolienne)",
-      "min":0
-    },
-    "id_nomenclature_methode_etude": {
-      "type_widget": "datalist",
-      "attribut_label": "Protocole d'étue",
-      "api": "nomenclatures/nomenclature/METHODE_ETUDE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition":"Protocole d'étude acoustique utilisée pour recueillir l'enregistrement"
-    },
-    "id_nomenclature_type_enregistrement": {
-      "type_widget": "datalist",
-      "attribut_label": "Type enregistrement acoustique",
-      "api": "nomenclatures/nomenclature/TYPE_ENREGISTREMENT",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition":"Méthode d'acquisition de l'enregistrement acoustique"
-    },
-    "id_nomenclature_type_identification": {
-      "type_widget": "datalist",
-      "attribut_label": "Type d'identification",
-      "api": "nomenclatures/nomenclature/TYPE_IDENTIFICATION",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition":"Méthode d'identification pour les écoutes manuelles",
-      "required": "({value, meta}) => [ 698].includes(value.id_nomenclature_type_enregistrement)",
-      "hidden": "({value, meta}) => ![ 698].includes(value.id_nomenclature_type_enregistrement)"
-    },
-    "id_nomenclature_methode_identification": {
-      "type_widget": "datalist",
-      "attribut_label": "Méthode d'identification",
-      "api": "nomenclatures/nomenclature/METHODE_IDENTIFICATION",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition":"Méthode d'identification informatique",
-      "required": "({value, meta}) => [ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "hidden": "({value, meta}) => ![ 697].includes(value.id_nomenclature_type_enregistrement)"
-    },
-    "id_nomenclature_logiciel_id_auto": {
-      "type_widget": "datalist",
-      "attribut_label": "Nom du logiciel id auto",
-      "api": "nomenclatures/nomenclature/LOGICIEL_ID_AUTO",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition":"Nom du logiciel d'identification automatique utilisé",
-      "required": "({value, meta}) => [ 701].includes(value.id_nomenclature_methode_identification)",
-      "hidden": "({value, meta}) => ![ 701].includes(value.id_nomenclature_methode_identification)"
-    },
-    "autre_logiciel_id_auto": {
-      "type_widget": "text",
-      "attribut_label": "Nom de l'autre logiciel d'identification utilisé",
-      "definition": "Autre logiciel d'identification utilisé",
-      "required": "({value, meta}) => [ 709].includes(value.id_nomenclature_logiciel_id_auto)",
-      "hidden": "({value, meta}) => ![ 709].includes(value.id_nomenclature_logiciel_id_auto)"
-    },
-    "id_nomenclature_type_canal": {
-      "type_widget": "datalist",
-      "attribut_label": "Type canal",
-      "api": "nomenclatures/nomenclature/TYPE_CANAL",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "multiple": false,
-      "definition":"Indique si l'enregistrement autonome a été réalisé en stéréo ou en mono.",
-      "required": "({value, meta}) => [ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "hidden": "({value, meta}) => ![ 697].includes(value.id_nomenclature_type_enregistrement)"
-
-    },
-    "decoupage_fichier": {
-      "type_widget": "radio",
-      "values": ["Oui", "Non"],
-      "attribut_label": "Découpage fichier",
-      "definition": "Indique si les fichiers ont été découpés selon une durée définie (exemple: 5 secondes communément utilisé pour standardiser le nombre de contacts)",
-      "required":  [
-        "({value, meta}) => {",
-        "const id_type_enr_ea = 697",
-        "const id_type_id_vi = 700",
-        "if (value.id_nomenclature_type_enregistrement != id_type_enr_ea ||  value.id_nomenclature_type_identification !=  id_type_id_vi ) {",
-          "return false",
-        "}",
-          "return true",
-        "}"
-      ],
-      "hidden":  [
-        "({value, meta}) => {",
-        "const id_type_enr_ea = 697",
-        "const id_type_id_vi = 700",
-        "if (value.id_nomenclature_type_enregistrement != id_type_enr_ea ||  value.id_nomenclature_type_identification !=  id_type_id_vi ) {",
-          "return true",
-        "}",
-          "return false",
-        "}"
-      ] 
-    },
-    "duree_decoupage_fichier": {
-      "type_widget": "number",
-      "attribut_label": "Durée découpage fichier (s)",
-      "definition": "Longueur du fichier exprimée en nombre de secondes (s) uniquement",
-      "required": true,
-      "hidden": "({value}) => value.decoupage_fichier == 'Oui'",
-      "min":0    
-    },
-    "age_micro": {
-      "type_widget": "number",
-      "attribut_label": "Age micro",
-      "definition": "Nombre de semaines cumulées d’activité du microphone en extérieur depuis l'achat",
-      "required": true,
-      "min":0    
-    },
-    "freq_min": {
-      "type_widget": "number",
-      "attribut_label": "Fréquence minimale enregistrement (Khz)",
-      "definition": "Frequence minimale d'enregistrement (Khz)",
-      "required": true,
-      "min":0    
-    },
-    "freq_max": {
-      "type_widget": "number",
-      "attribut_label": "Fréquence maximale enregistrement (Khz)",
-      "definition": "Frequence maximale d'enregistrement (Khz)",
-      "required": true,
-      "min":0    
-    },
-    "trigger_used":{
-      "type_widget": "radio",
-      "attribut_label": "Utilisation d'un trigger ?",
-      "values": ["Oui", "Non"],
-      "required": "({value, meta}) => [ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "hidden": "({value, meta}) => ![ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "definition": "Utilisation ou non d'un déclencheur (Trigger) de l'enregistrement (champ obligatoire)"
-    },
-    "trigger_decibel": {
-      "type_widget": "number",
-      "attribut_label": "Seuil de déclenchement en décibel (dB)",
-      "definition": "Seuil de déclenchement en décibel (dB)",
-      "required": "({value}) => value.trigger_used != 'Oui'",
-      "hidden": "({value}) => value.trigger_used == 'Oui'",
-      "min":0    
-    },
-    "gain_used":{
-      "type_widget": "radio",
-      "attribut_label": "Utilisation d'un gain pré-ampli ?",
-      "values": ["Oui", "Non"],
-      "required": "({value, meta}) => [ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "hidden": "({value, meta}) => ![ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "definition": "Indique si une augmentation du gain du pré-ampli a été utilisé (champ obligatoire)"
-    },
-    "gain": {
-      "type_widget": "number",
-      "attribut_label": "Valeur du gain (dB)",
-      "definition": "Indique la valeur du gain en décibel (dB) si un gain a été utilisé",
-      "required": "({value, meta}) => value.gain_used == 'Oui'",
-      "hidden": "({value, meta}) => value.gain_used != 'Oui'",
-      "min":0    
-    },
-    "intervalle_cris_max": {
-      "type_widget": "number",
-      "attribut_label": "Intervalle maximum entre deux cris (s)",
-      "definition": "Intervalle maximum entre deux cris (s)",
-      "min":0,
-      "required": "({value, meta}) => [ 697].includes(value.id_nomenclature_type_enregistrement)",
-      "hidden": "({value, meta}) => ![ 697].includes(value.id_nomenclature_type_enregistrement)"
-    },
-    "id_nomenclature_modele_materiel": {
-      "type_widget": "datalist",
-      "attribut_label": "Modèle matériel acoustique",
-      "api": "nomenclatures/nomenclature/MODELE_MATERIEL",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition":"Modèle du matériel acoustique utilisé"
-    },
-    "modele_autre": {
-      "type_widget": "text",
-      "attribut_label": "Autre modèle",
-      "definition": "Si ModMat = 45 saisir le modèle et la marque séparés d'une virgule. Exemple : SM2BAT, Wildlife Acoustics",
-      "required": "({value, meta}) => [ 763].includes(value.id_nomenclature_modele_materiel)",
-      "hidden": "({value, meta}) => ![ 763].includes(value.id_nomenclature_modele_materiel)"
-
-    },
-    "id_nomenclature_type_duree": {
-      "type_widget": "datalist",
-      "attribut_label": "Type de durée",
-      "api": "nomenclatures/nomenclature/TYPE_DUREE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition":"Catégorie de durée d'enregistrement ou d'écoute sur le point/transect d'échantillonnage."
-    },
-    "score": {
-      "type_widget": "number",
-      "attribut_label": "Score",
-      "definition": "Indice de confiance fourni par le logiciel d'identification automatique.  L'indice doit être compris entre 0 et 1, ainsi pour les logiciels fournissant un indice compris entre 0 et 10 par exemple, l'indice doit être divisé par 10",
-      "min":0,   
-      "max":10,
-      "required":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const id_methode_id_a = 701",
-        "if (value.id_nomenclature_type_enregistrement != id_methode_id_a && value.id_nomenclature_presence_acoustique != id_pres_acoustisque ) {",
-          "return false",
-        "}",
-          "return true",
-        "}"
-      ],
-      "hidden":  [
-        "({value, meta}) => {",
-        "const id_pres_acoustisque = 676",
-        "const id_methode_id_a = 701",
-        "if (value.id_nomenclature_methode_identification != id_methode_id_a && value.id_nomenclature_presence_acoustique != id_pres_acoustisque ) {",
-          "return true",
-        "}",
-          "return false",
-        "}"
-      ] 
-    }
-},
-"change": [
-  "({objForm, meta}) => {",
-  "const journee_date_fin = objForm.value.visit_date_min;",
-  "if (objForm.controls.visit_date_min.valid) {",
-  "objForm.patchValue({'visit_date_max':journee_date_fin})",
-  "}",
-  "}",
-  ""
-]
+        ""
+    ]
 }

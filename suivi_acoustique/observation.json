@@ -1,61 +1,46 @@
-{
-  "cruved": { "C": 1, "U": 1, "D": 3 },
+{ 
   "display_properties": [
+    "heure_obs",
     "cd_nom",
-    "heure_obs"
+    "liste_cd_nom"
   ],
-  "display_list": ["cd_nom"],
+  "display_list": [
+    "heure_obs",
+    "cd_nom",
+    "liste_cd_nom"
+  ],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-    "id_nomenclature_presence_acoustique": {
-      "type_widget": "datalist",
-      "attribut_label": "Présence acoustique",
-      "api": "nomenclatures/nomenclature/PRESENCE_ACOUSTIQUE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false,
-      "definition": "Indique si au moins un contact acoustique a été relevé durant le point ou le transect dans sa globalité. Ce champ permet en cas d'absence totale d'activité de saisir une absence de chiroptères."
-    },
     "heure_obs": {
       "type_widget": "time",
-      "attribut_label": "Heure observation"
+      "attribut_label": "Heure à laquelle l'individu est contacté.",
+      "required": true,
+      "multiple": false
     },
     "cd_nom": {
       "type_widget": "taxonomy",
-      "attribut_label": "Espèce observée",
+      "attribut_label": "Espèce",
+      "type_util": "taxonomy",
+      "required": true,
+      "id_list": "__MODULE.ID_LIST_TAXONOMY"
+    },
+    "liste_cd_nom": {
+      "type_widget": "datalist",
+      "attribut_label": "Liste des espèces possibles dans le cas d'un cadavre pour laquelle une identification à l'espèce n'est pas possible.",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
-      "multiple": false,
+      "multiple": true,
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "type_util": "taxonomy",
-      "required": true,
-      "hidden": "({value}) => value.id_nomenclature_presence_acoustique != 676"
+      "required": true
     },
-    "list_cd_nom": {
-      "type_widget": "txt",
-      "attribut_label": "Liste de cd_nom",
-      "required": "({value}) => value.id_nomenclature_presence_acoustique == 676",
-      "hidden": "({value}) => value.id_nomenclature_presence_acoustique != 676",
-      "definition": "il s'agit de lister les codes 'cd_nom' des espèces constituant le groupe d'espèces possibles pour l'observation en les séparant par une virgule. Par exemple si l'observateur ne peut pas affirmer que la séquence acoustique provient d'un individu de Pipistrellus kuhlii ou Pipistrellus nathusii, il faudra saisir:  79303, 60490"
+    "comments": {
+      "hidden": true 
     },
     "medias": {
-      "hidden": true,
-      "type_widget": "medias",
-      "attribut_label": "Médias",
-      "schema_dot_table": "gn_monitoring.t_observations"
+      "hidden": true
     }
-  },
-  "change": [
-    "({objForm, meta}) => {",
-      "if (objForm.controls['id_nomenclature_presence_acoustique'].value != 676) {",
-        "objForm.patchValue( {'cd_nom':null});",
-    "}",
-    "}"
-  ]
+  }
 }

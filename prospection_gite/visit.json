@@ -1,28 +1,47 @@
-{
-  "cruved": { "C": 1, "U": 1, "D": 3 },
+{ 
   "display_properties": [
     "id_base_site",
+    "observers_txt",
     "visit_date_min",
     "visit_date_max",
-    "nb_observations",
-    "observers",
-    "observers_txt"
+    "type_donnee_gite"
   ],
-  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
+  "display_list": [
+    "visit_date_min",
+    "nb_observations",
+    "type_donnee_gite"
+  ],
   "map_label_field_name": "base_site_code",
   "specific": {
     "observers": {
-      "hidden": false,
-      "required": true
+      "required": false,
+      "hidden": true
     },
     "observers_txt": {
-      "hidden": true,
-      "required": false
+      "required": false,
+      "hidden": true
+    },
+    "id_dataset": {
+      "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
     },
     "visit_date_min": {
       "type_widget": "date",
-      "attribut_label": "Date du suivi de mortalité",
+      "attribut_label": "Date de début de la visite",
       "required": true
+    },
+    "visit_date_max": {
+      "type_widget": "date",
+      "attribut_label": "Date de fin de la visite",
+      "required": false
+    },
+    "type_donnee_gite": {
+      "type_widget": "nomenclature",
+      "attribut_label": "type_donnee_gite",
+      "code_nomenclature_type": "TYPE_DONNEE_GITE",
+      "definition": "Type de données récoltées.",
+      "type_util": "nomenclature",
+      "required": true,
+      "hidden": false
     }
   },
   "change": [

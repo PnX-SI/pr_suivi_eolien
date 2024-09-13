@@ -1,81 +1,86 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
-    "id_nomenclature_type_donnee_gite",
+    "observers_txt",
+    "heure_obs",
     "cd_nom",
-    "id_nomenclature_type_effectif",
-    "effectif",
-    "id_nomenclature_presence_juvenile",
-    "nb_juvenils"
+    "liste_cd_nom",
+    "count_min",
+    "count_max",
+    "PresenceJuvenils",
+    "NombreJuvenils"
   ],
-  "display_list": ["cd_nom", "effectif", "nb_juvenils"],
+  "display_list": ["observers_txt", "cd_nom","count_min", "PresenceJuvenils"],
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-    "id_nomenclature_type_donnee_gite": {
-      "type_widget": "datalist",
-      "attribut_label": "Type de donnée de gîte",
-      "api": "nomenclatures/nomenclature/TYPE_DONNEE_GITE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": true,
-      "multiple": false
+    "observers_txt": {
+      "hidden": false,
+      "required": true
+    },
+    "heure_obs": {
+      "type_widget": "time",
+      "attribut_label": "Heure observation",
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
     },
     "cd_nom": {
       "type_widget": "taxonomy",
-      "attribut_label": "Espèce observée",
-      "keyValue": "cd_nom",
+      "attribut_label": "Espèce ou groupe taxonomique observé (cdNom)",
+      "keyValue": "cd_nom unique le plus précis pouvant être remonté",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": false,
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
-      "type_util": "taxonomy",
+      "type_util": "taxonomie",
       "required": true
     },
-    "id_nomenclature_type_effectif": {
-      "type_widget": "datalist",
-      "attribut_label": "Type effectif",
-      "api": "nomenclatures/nomenclature/TYPE_EFFECTIF",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
+    "liste_cd_nom": {
+      "type_widget": "datalist", 
+      "attribut_label": "Liste des espèces potentiellement observées.",
+      "keyValue": "cd_nom",
+      "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
+      "multiple": true,
+      "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
+      "application": "TaxHub",
+      "type_util": "taxonomie",
+      "required": true
+    },
+    "type_effectif": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Méthode de comptage",
+      "code_nomenclature_type": "TYPE_EFFECTIF",
       "type_util": "nomenclature",
-      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "multiple": false
+      "required": true,
+      "hidden":false
     },
-    "effectif": {
+    "count_min": {
       "type_widget": "number",
-      "attribut_label": "Nombre d'individus",
-      "min": 1,
-      "value": 1,
-      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)"
+      "attribut_label": "Effectif minimum",
+      "min": 0,
+      "value": 0,
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
     },
-    "id_nomenclature_presence_juvenile": {
-      "type_widget": "datalist",
-      "attribut_label": "Présence de juvéniles",
-      "api": "nomenclatures/nomenclature/PRESENCE_JUVENILE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
-      "required": "({value}) => [649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite)",
-      "multiple": false
-    },
-    "nb_juvenils": {
+    "count_max": {
       "type_widget": "number",
-      "attribut_label": "Nombre de juveniles",
-      "min": 1,
-      "value": 1,
-      "required": false,
-      "hidden": "({value}) => ![649,648].includes(value.id_nomenclature_type_donnee_gite) || value.id_nomenclature_presence_juvenile == 804"
+      "attribut_label": "Effectif maximum",
+      "min": "({value}) => value.count_min",
+      "required": "({value}) => value.presence_cadavre?.includes('1')",
+      "hidden": "({value}) => !value.presence_cadavre?.includes('1')"
+    },
+    "PresenceJuvenils": {
+       "type_widget": "radio",
+       "attribut_label": "Présence de juvéniles ?",
+       "values": ["Oui", "Non"]
+    },
+    "NombreJuvenils": {
+      "type_widget": "number",
+      "attribut_label": "Nombre de juvéniles",
+      "min": 0,
+      "value": 0,
+      "required": "({value}) => value.PresenceJuvenils?.includes('Oui')",
+      "hidden": "({value}) => !value.PresenceJuvenils?.includes('Oui')"
     },
     "medias": {
       "hidden": true,
@@ -83,14 +88,5 @@
       "attribut_label": "Médias",
       "schema_dot_table": "gn_monitoring.t_observations"
     }
-  },
-  "change": [
-    "({objForm, meta}) => {",
-    "if ('id_nomenclature_type_donnee_gite' in objForm.controls) {",
-      "if (objForm.controls['id_nomenclature_type_donnee_gite'].value == 650) {",
-        "objForm.patchValue( {'cd_nom':null});",
-        "}",
-    "}",
-    "}"
-  ]
+  }
 }

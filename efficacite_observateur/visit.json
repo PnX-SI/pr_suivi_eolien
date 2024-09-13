@@ -1,26 +1,35 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
+    "observers_txt",
     "id_base_site",
+    "type_donnee",
     "visit_date_min",
     "visit_date_max",
-    "nb_observations",
-    "observers",
-    "observers_txt",
-    "id_type_donnee"
-  ],
-  "display_list": ["visit_date_min", "nb_observations","observers", "observers_txt"],
+    "hauteur_moy_veg"
+   ],
+  "display_list": ["visit_date_min", "hauteur_veg"],
   "map_label_field_name": "base_site_code",
   "specific": {
     "observers": {
-      "hidden": false,
-      "required": true
+      "required": false,
+      "hidden": true
     },
     "observers_txt": {
-      "hidden": true,
-      "required": false
+      "required": false,
+      "hidden": true
     },
-    "visit_date_min": {
+    "id_dataset": {
+      "hidden": "({meta}) => return(meta.dataset && Object.keys(meta.dataset).length == 1)"
+    },
+    "type_donnee": {
+      "type_widget": "text",
+      "attribut_label": "Type de donnée",
+      "value": "Efficacité de l'observateur",
+      "hidden": true,
+      "required": true
+    },
+     "visit_date_min": {
       "type_widget": "date",
       "attribut_label": "Date du test observateur",
       "required": true
@@ -31,21 +40,12 @@
       "hidden": true,
       "required": true
     },
-    "id_type_donnee": {
-      "type_widget": "datalist",
-      "attribut_label": "Type de donnée",
-      "api": "nomenclatures/nomenclature/TYPE_DONNEE",
-      "application": "GeoNature",
-      "keyValue": "id_nomenclature",
-      "keyLabel": "label_fr",
-      "data_path": "values",
-      "type_util": "nomenclature",
+    "hauteur_moy_veg": {
+      "type_widget": "number",
+      "attribut_label": "Hauteur moyenne de la végétation",
+      "definition": "Estimation de la hauteur moyenne de la végétation herbacée à buissonnante sur l'ensemble de la surface prospectée, incluant les zones de sous-bois si prospectées, en centimètres.",
       "required": true,
-      "multiple": false,
-      "hidden":true,
-      "default": {
-        "cd_nomenclature": "EFF_OBSERVATEUR"
-      }
+      "min":0
     }
   },
   "change": [
