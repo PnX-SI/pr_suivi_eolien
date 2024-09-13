@@ -1,6 +1,7 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
+    "observers_txt",
     "id_base_site",
     "type_donnee",
     "visit_date_min",
@@ -10,6 +11,14 @@
   "display_list": ["visit_date_min", "hauteur_veg"],
   "map_label_field_name": "base_site_code",
   "specific": {
+    "observers": {
+      "required": false,
+      "hidden": true
+    },
+    "observers_txt": {
+      "required": false,
+      "hidden": true
+    },
     "id_dataset": {
       "hidden": "({meta}) => return(meta.dataset && Object.keys(meta.dataset).length == 1)"
     },

@@ -3,12 +3,21 @@
   "display_properties": [
     "id_base_site",
     "type_donnee",
-     "visit_date_min",
+    "observers_txt",
+    "visit_date_min",
     "visit_date_max"
    ],
   "display_list": ["visit_date_min", "presence_foret", "hauteur_veg"],
   "map_label_field_name": "base_site_code",
   "specific": {
+    "observers": {
+      "required": false,
+      "hidden": true
+    },
+    "observers_txt": {
+      "required": false,
+      "hidden": true
+    },
     "id_dataset": {
       "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
     },

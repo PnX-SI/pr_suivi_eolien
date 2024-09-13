@@ -141,12 +141,13 @@
             "attribut_label": "Heure de fin du point fixe ou du transect.",
             "required": true
         },
+        "observers": {
+            "required": false,
+            "hidden": true
+        },
         "observers_txt": {
-            "type_widget": "text",
-            "attribut_label": "Observateur (Organisme)",
-            "definition": "Nom (ORGANISME), responsable du suivi acoustique.",
-            "hidden": false,
-            "required": true
+            "required": false,
+            "hidden": true
         },
         "presence_acoustique": {
             "type_widget": "nomenclature",

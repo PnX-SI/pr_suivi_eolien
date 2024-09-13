@@ -1,6 +1,7 @@
 { 
   "display_properties": [
     "id_base_site",
+    "observers_txt",
     "visit_date_min",
     "visit_date_max",
     "type_donnee_gite"
@@ -12,6 +13,14 @@
   ],
   "map_label_field_name": "base_site_code",
   "specific": {
+    "observers": {
+      "required": false,
+      "hidden": true
+    },
+    "observers_txt": {
+      "required": false,
+      "hidden": true
+    },
     "id_dataset": {
       "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
     },
