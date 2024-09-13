@@ -18,7 +18,7 @@
     "id_nomenclature_presence_foret",
     "id_nomenclature_presence_cadavre"
      ],
-  "display_list": ["visit_date_min", "longueur_surface", "surface_recherche", "duree_recherche", "heure_debut_recherche", "id_nomenclature_type_surface", "forme_surface", "surface_veg", "hauteur_moyenne_veg", "pourcentage_foret", "id_nomenclature_presence_foret"],
+  "display_list": ["visit_date_min", "type_donnee", "observers_txt"],
   "map_label_field_name": "base_site_code",
   "specific": {
     "observers": {
