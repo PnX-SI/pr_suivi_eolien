@@ -2,7 +2,6 @@
   
   "display_properties": [
     "id_nomenclature_presence_cadavre",
-    "observers_txt",
     "geometrie",
     "distance_eolienne",
     "heure_obs",
@@ -15,7 +14,6 @@
   ],
   "display_list": [
     "id_nomenclature_presence_cadavre",
-    "observers_txt",
     "distance_eolienne",
     "heure_obs",
     "cd_nom",
@@ -32,12 +30,6 @@
       "attribut_label": "Présence de cadavre",
       "code_nomenclature_type": "PRES_CADAVRE",
       "type_util": "nomenclature",
-      "required": true,
-      "hidden": false
-    }, 
-    "observers_txt": {
-      "type_widget": "text",
-      "attribut_label": "Observateur(s) (extérieur)",
       "required": true,
       "hidden": false
     },
