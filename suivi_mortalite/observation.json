@@ -1,7 +1,6 @@
 {
   
   "display_properties": [
-    "id_nomenclature_presence_cadavre",
     "geometrie",
     "distance_eolienne",
     "heure_obs",
@@ -13,7 +12,6 @@
     "id_nomenclature_presence_foret"
   ],
   "display_list": [
-    "id_nomenclature_presence_cadavre",
     "distance_eolienne",
     "heure_obs",
     "cd_nom",
@@ -25,14 +23,6 @@
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
-    "id_nomenclature_presence_cadavre": {
-      "type_widget": "nomenclature",
-      "attribut_label": "Présence de cadavre",
-      "code_nomenclature_type": "PRES_CADAVRE",
-      "type_util": "nomenclature",
-      "required": true,
-      "hidden": false
-    },
     "geometrie": {
       "type_widget": "text",
       "attribut_label": "Géométrie WKT",
@@ -69,10 +59,6 @@
       "multiple": false,
       "min": 0
     },
-    "cd_nom": {
-      "required": "({value, meta}) => ((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')",
-      "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')"
-    },
     "liste_cd_nom": {
       "type_widget": "datalist",
       "attribut_label": "Liste des codes des taxons possibles dans le cas d'un cadavre pour laquelle une identification dans le champ cdNom ne serait possible qu'à la famille.",
@@ -82,16 +68,16 @@
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
       "type_util": "taxonomie",
-      "required": "({value, meta}) => ((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')",
-      "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1')"
+      "required": true,
+      "hidden": false
     },
     "id_nomenclature_sex": {
       "type_widget": "nomenclature",
       "attribut_label": "Sexe du cadavre retrouvé.",
       "code_nomenclature_type": "SEXE",
       "type_util": "nomenclature",
-      "required": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature == '1'",
-      "hidden": "({value, meta}) => (meta.nomenclatures[value.id_nomenclature_presence_cadavre] || {}).cd_nomenclature !== '1'"
+      "required": true,
+      "hidden": false
     },
     "id_nomenclature_presence_foret": {
       "type_widget": "nomenclature",
@@ -102,17 +88,9 @@
       "hidden": false
     },
     "medias": {
-      "hidden": true,
-      "type_widget": "medias",
-      "attribut_label": "Médias",
-      "schema_dot_table": "gn_monitoring.t_observations"
+      "hidden": true
     }
   },
   "change": [
-    "({objForm, meta}) => {", 
-    "if ( !((meta.nomenclatures[objForm.controls['id_nomenclature_presence_cadavre'].value] || {}).cd_nomenclature == '1')) {",
-    "objForm.patchValue( {'cd_nom': { cd_nom: 186233, nom_valide: 'Chiroptera Blumenbach, 1779',nom_vern: null }, 'liste_cd_nom': [ ], 'id_nomenclature_sex':null });",
-    "}",
-    "}"
   ]
 }

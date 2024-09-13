@@ -15,7 +15,8 @@
     "surface_veg",
     "hauteur_moyenne_veg",
     "pourcentage_foret",
-    "id_nomenclature_presence_foret"
+    "id_nomenclature_presence_foret",
+    "id_nomenclature_presence_cadavre"
      ],
   "display_list": ["visit_date_min", "longueur_surface", "surface_recherche", "duree_recherche", "heure_debut_recherche", "id_nomenclature_type_surface", "forme_surface", "surface_veg", "hauteur_moyenne_veg", "pourcentage_foret", "id_nomenclature_presence_foret"],
   "map_label_field_name": "base_site_code",
@@ -106,7 +107,16 @@
       "definition": "Pourcentage de la surface prospectée recouverte par de la forêt, n'incluant pas la surface non prospectée.",
       "required": true,
       "min":0
-    }  
+    },
+    "id_nomenclature_presence_cadavre": {
+      "type_widget": "nomenclature",
+      "attribut_label": "Présence de cadavre",
+      "code_nomenclature_type": "PRES_CADAVRE",
+      "definition": "Indique si un ou des cadavres ont été observés. Si non ne pas saisir d'observation",
+      "type_util": "nomenclature",
+      "required": true,
+      "hidden": false
+    }
   },
   "change": [
     "({objForm, meta}) => {",
