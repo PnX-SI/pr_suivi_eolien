@@ -26,6 +26,10 @@
       }
     ],
     "specific": {
+      "id_inventor": {
+        "required": false,
+        "hidden": true
+      },
       "diametre_rotor": {
         "attribut_label": "Diamètre du rotor (m) ",
         "min": 0,
