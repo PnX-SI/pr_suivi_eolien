@@ -18,7 +18,7 @@
     "specific": {
       "id_inventor": {
         "required": false,
-        "hidden": false
+        "hidden": true
       },
       "id_nomenclature_type_gite": {
         "type_widget": "datalist",
