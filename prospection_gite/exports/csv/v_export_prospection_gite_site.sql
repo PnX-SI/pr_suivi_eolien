@@ -34,7 +34,7 @@ JOIN LATERAL ( SELECT d_1.id_base_site ,
 left join utilisateurs.t_roles tr on tr.id_role = s.id_digitiser 
 join utilisateurs.bib_organismes org on
 	org.id_organisme = tr.id_organisme
-left join gn_monitoring.cor_type_site cts on s.id_base_site = cts.id_base_site 
+left join gn_monitoring.cor_site_type cts on s.id_base_site = cts.id_base_site 
 left join gn_monitoring.cor_module_type cmt on cmt.id_type_site = cts.id_type_site  
 left join gn_commons.t_modules tm on tm.id_module = cmt.id_module
 WHERE tm.module_code::text = :module_code

@@ -51,7 +51,7 @@ from gn_monitoring.t_observations tobs
     left join utilisateurs.t_roles tr on tr.id_role = tobs.id_digitiser
     join utilisateurs.bib_organismes bo on tr.id_organisme = bo.id_organisme
     left join gn_monitoring.t_base_sites tbs on tbs.id_base_site = tbv.id_base_site
-    left join gn_monitoring.cor_type_site cts on tbs.id_base_site = cts.id_base_site
+    left join gn_monitoring.cor_site_type cts on tbs.id_base_site = cts.id_base_site
     left join gn_monitoring.cor_module_type cmt on cmt.id_type_site = cts.id_type_site
     left join gn_commons.t_modules tm on tm.id_module = cmt.id_module
     left join lateral (

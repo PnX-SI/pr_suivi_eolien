@@ -15,11 +15,11 @@
 -- ne pas remplacer cette variable, elle est indispensable pour les scripts d'installations
 -- le module pouvant être installé avec un code différent de l'original
 --suivimortalite
-DROP VIEW IF EXISTS gn_monitoring.v_synthese_:module_code;
-CREATE VIEW gn_monitoring.v_synthese_:module_code AS WITH source AS (
+DROP VIEW IF EXISTS gn_monitoring.v_synthese_suivi_acoustique
+CREATE VIEW gn_monitoring.v_synthese_suivi_acoustique AS WITH source AS (
 	SELECT id_source
 	FROM gn_synthese.t_sources
-	WHERE name_source = CONCAT('MONITORING_', UPPER(:'module_code'))
+	WHERE name_source = CONCAT('MONITORING_', UPPER(:module_code))
 	LIMIT 1
 )
 , sites AS (
@@ -211,6 +211,6 @@ FROM gn_monitoring.t_observations o
 	JOIN observers obs ON obs.id_base_visit = v.id_base_visit
 	JOIN determiner det ON det.id_base_visit = v.id_base_visit
 	LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom_local) alt (altitude_min, altitude_max) ON TRUE --left JOIN determinateurs_monit on determinateurs_monit.id_observation = o.id_observation
-WHERE m.module_code = :'module_code';
+WHERE m.module_code::text = :module_code;
 SELECT *
-FROM gn_monitoring.v_synthese_:module_code
+FROM gn_monitoring.v_synthese_suivi_acoustique
