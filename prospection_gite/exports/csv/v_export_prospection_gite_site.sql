@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS gn_monitoring.v_export_suivi_:module_code_site;
-CREATE OR REPLACE VIEW gn_monitoring.v_export_:module_code_site as
+DROP VIEW IF EXISTS gn_monitoring.v_export_suivi_prospection_gite_site;
+CREATE OR REPLACE VIEW gn_monitoring.v_export_prospection_gite_site as
 SELECT 
 tm.module_code as protocole,
 ref_nomenclatures.get_nomenclature_label((cmt.id_type_site)::integer) AS type_site,
@@ -15,7 +15,7 @@ a.jcode->>'DEP' AS code_departement,
 a.jname->>'DEP' as departement,
 concat(tr.nom_role, ' ', tr.prenom_role) as numerGite,
 org.nom_organisme as organismeNumerGite,
-ref_nomenclatures.get_nomenclature_label((tsc.data->>'id_nomenclature_type_gite')::integer) AS TypeGite,
+ref_nomenclatures.get_nomenclature_label((tsc.data->>'id_nomenclature_type_gite')::integer) AS TypeGite
 from gn_monitoring.t_base_sites s
 LEFT JOIN gn_monitoring.t_site_complements tsc ON s.id_base_site = tsc.id_base_site 
 JOIN LATERAL ( SELECT d_1.id_base_site ,
@@ -37,4 +37,4 @@ join utilisateurs.bib_organismes org on
 left join gn_monitoring.cor_site_type cts on s.id_base_site = cts.id_base_site 
 left join gn_monitoring.cor_module_type cmt on cmt.id_type_site = cts.id_type_site  
 left join gn_commons.t_modules tm on tm.id_module = cmt.id_module
-WHERE tm.module_code::text = :module_code
+WHERE tm.module_code::text = 'prospection_gite'
