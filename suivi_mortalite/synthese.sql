@@ -125,15 +125,18 @@ SELECT o.uuid_observation AS unique_id_sinp,
 	o.comments AS comment_description,
 	obs.ids_observers,
 	v.id_base_site,
-	v.id_base_visit
+	v.id_base_visit,
+	tsg.id_sites_group
 FROM gn_monitoring.t_observations o
 	JOIN gn_monitoring.t_observation_complements obscompl on o.id_observation = obscompl.id_observation
 	JOIN visits v ON v.id_base_visit = o.id_base_visit
 	JOIN sites s ON s.id_base_site = v.id_base_site
 	JOIN gn_commons.t_modules m ON m.id_module = v.id_module
 	JOIN taxonomie.taxref t ON t.cd_nom = o.cd_nom
+	JOIN gn_monitoring.t_site_complements tsc ON s.id_base_site = tsc.id_base_site 
+	LEFT JOIN gn_monitoring.t_sites_groups tsg on tsg.id_sites_group = tsc.id_sites_group 
 	JOIN source ON TRUE
-	JOIN observers obs ON obs.id_base_visit = v.id_base_visit
+	LEFT JOIN observers obs ON obs.id_base_visit = v.id_base_visit
 	LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom_local) alt (altitude_min, altitude_max) ON TRUE
 WHERE m.module_code::text = 'suivi_mortalite';
 SELECT *
