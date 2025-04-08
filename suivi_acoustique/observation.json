@@ -22,6 +22,8 @@
       "type_widget": "taxonomy",
       "attribut_label": "Espèce",
       "type_util": "taxonomy",
+      "value": 186233,
+      "hidden": true,
       "required": true,
       "id_list": "__MODULE.ID_LIST_TAXONOMY"
     },

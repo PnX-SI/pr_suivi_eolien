@@ -108,6 +108,13 @@
       "required": true,
       "min":0
     },
+    "pourcentage_vegetal": {
+      "type_widget": "number",
+      "attribut_label": "Pourcentage recouvert par de la végétation herbacée à buissonnante, y compris en sous-bois",
+      "definition": "Pourcentage de la surface prospectée recouverte par de la végétation herbacée à buissonnante, y compris en sous-bois, n'incluant pas la surface non prospectée.",
+      "required": true,
+      "min":0
+    },
     "id_nomenclature_presence_cadavre": {
       "type_widget": "nomenclature",
       "attribut_label": "Présence de cadavre",
