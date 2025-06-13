@@ -23,7 +23,7 @@
     {
       "mnemonique": "PRES_FORET",
       "label_default": "Présence de forêt",
-      "definition_default": "Localisation du cadavre ou du leurre en forêt ou non."
+      "definition_default": "Présence de forêt à l'emplacement du cadavre."
     }
   ],
   "nomenclatures": [

@@ -1,5 +1,5 @@
 {
-  "module_label": "Test de persistance",
+  "module_label": "Persistance de cadavre",
   "module_desc": "Portocole de test de persistance",
   "display_properties": ["module_label", "module_desc"],
   "specific": {
