@@ -35,6 +35,7 @@
       "multiple": true,
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
+      "params": {"limit": "100000"},
       "type_util": "taxonomy",
       "required": true
     },

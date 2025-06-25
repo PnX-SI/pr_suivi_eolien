@@ -66,6 +66,7 @@
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": true,
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
+      "params": {"limit": "100000"},
       "application": "TaxHub",
       "type_util": "taxonomie",
       "required": true,
