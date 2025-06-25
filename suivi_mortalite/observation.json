@@ -61,7 +61,7 @@
     },
     "liste_cd_nom": {
       "type_widget": "datalist",
-      "attribut_label": "Liste des codes des taxons possibles dans le cas d'un cadavre pour laquelle une identification dans le champ cdNom ne serait possible qu'à la famille.",
+      "attribut_label": "Liste des taxons quand seul la famille d'un cadavre est identifiable (champ cd_nom).",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": true,

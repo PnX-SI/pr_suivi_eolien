@@ -270,7 +270,7 @@
             "required": true
         },
         "autre_logiciel_auto": {
-            "type_widget": "txt",
+            "type_widget": "text",
             "attribut_label": "Nom du logiciel d'identification automatique utilisé",
             "required": "({value, meta}) => ((meta.nomenclatures[value.logiciel_id_auto] || {}).cd_nomenclature == 'AU')",
             "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.logiciel_id_auto] || {}).cd_nomenclature == 'AU')"
