@@ -22,6 +22,12 @@
   "map_label_field_name": "base_site_code",
   "redirect_to_parent": true,
   "specific": {
+    "cd_nom": {
+      "type_widget": "taxonomy",
+      "attribut_label": "Espèce",
+      "type_util": "taxonomy",
+      "id_list": "__MODULE.ID_LIST_TAXONOMY"
+    },
     "id_nomenclature_type_cadavre": {
       "type_widget": "nomenclature",
       "attribut_label": "Type de Cadavre",

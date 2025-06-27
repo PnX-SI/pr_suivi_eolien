@@ -29,7 +29,7 @@
     },
     "liste_cd_nom": {
       "type_widget": "datalist",
-      "attribut_label": "Liste des espèces possibles dans le cas d'un cadavre pour laquelle une identification à l'espèce n'est pas possible.",
+      "attribut_label": "Liste des taxons quand seul la famille d'un cadavre est identifiable (champ cd_nom).",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": true,
