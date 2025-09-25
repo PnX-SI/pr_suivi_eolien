@@ -270,7 +270,7 @@
             "required": true
         },
         "autre_logiciel_auto": {
-            "type_widget": "txt",
+            "type_widget": "text",
             "attribut_label": "Nom du logiciel d'identification automatique utilisé",
             "required": "({value, meta}) => ((meta.nomenclatures[value.logiciel_id_auto] || {}).cd_nomenclature == 'AU')",
             "hidden": "({value, meta}) =>  !((meta.nomenclatures[value.logiciel_id_auto] || {}).cd_nomenclature == 'AU')"
@@ -403,7 +403,7 @@
     "change": [
         "({objForm, meta}) => {",
         "const journee_date_fin = objForm.value.visit_date_min;",
-        "if (objForm.controls.visit_date_min.valid) {",
+        "if (objForm.controls.visit_date_min.valid && journee_date_fin !== objForm.value.visit_date_max) {",
         "objForm.patchValue({'visit_date_max':journee_date_fin})",
         "}",
         "}",

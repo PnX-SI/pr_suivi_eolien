@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS gn_monitoring.v_export_:module_code_observations;
-CREATE OR REPLACE VIEW gn_monitoring.v_export_:module_code_observations as
+DROP VIEW IF EXISTS gn_monitoring.v_export_prospection_gite_observations;
+CREATE OR REPLACE VIEW gn_monitoring.v_export_prospection_gite_observations as
 select tm.module_code as protocole,
     tbs.base_site_code as idEolienne,
     tbs.id_base_site,
@@ -51,7 +51,7 @@ from gn_monitoring.t_observations tobs
     left join utilisateurs.t_roles tr on tr.id_role = tobs.id_digitiser
     join utilisateurs.bib_organismes bo on tr.id_organisme = bo.id_organisme
     left join gn_monitoring.t_base_sites tbs on tbs.id_base_site = tbv.id_base_site
-    left join gn_monitoring.cor_type_site cts on tbs.id_base_site = cts.id_base_site
+    left join gn_monitoring.cor_site_type cts on tbs.id_base_site = cts.id_base_site
     left join gn_monitoring.cor_module_type cmt on cmt.id_type_site = cts.id_type_site
     left join gn_commons.t_modules tm on tm.id_module = cmt.id_module
     left join lateral (
@@ -70,7 +70,7 @@ from gn_monitoring.t_observations tobs
 	group by
 		tmed.uuid_attached_row) tmed3 on
 	tmed3.uuid_attached_row = tobs.uuid_observation
-where tm.module_code::text = :module_code
+where tm.module_code::text = 'prospection_gite'
 group by tobs.id_observation,
     tm.module_code,
     tbs.id_base_site,

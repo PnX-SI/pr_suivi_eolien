@@ -24,8 +24,6 @@ a.jcode->>'DEP' AS code_departement,
 a.jname->>'DEP' as departement,
 concat(tr.nom_role, ' ', tr.prenom_role) as numerEol,
 org.nom_organisme as organismeNumerEol,
-ref_nomenclatures.get_nomenclature_label((tsc.data->>'id_nomenclature_contexte_saisie')::integer) AS ContSaisie,
-ref_nomenclatures.get_nomenclature_label((tsc.data->>'id_nomenclature_type_lisiere')::integer) AS TypeLisiere,
 tsc.data->>'modele_eolienne' AS ModEolienne,
 tsc.data->>'longueur_pales' AS LongPales,
 tsc.data->>'hauteur_eolienne' AS HautEolienne,
@@ -48,7 +46,7 @@ JOIN LATERAL ( SELECT d_1.id_base_site ,
 left join utilisateurs.t_roles tr on tr.id_role = s.id_digitiser 
 join utilisateurs.bib_organismes org on
 	org.id_organisme = tr.id_organisme
-left join gn_monitoring.cor_type_site cts on s.id_base_site = cts.id_base_site 
+left join gn_monitoring.cor_site_type cts on s.id_base_site = cts.id_base_site 
 join gn_monitoring.t_sites_groups tsg on tsg.id_sites_group = tsc.id_sites_group 
 join lateral (select area_name as commune_from_centroid from 
 ref_geo.fct_get_area_intersection(st_centroid(tsg.geom)) rfg

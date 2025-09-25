@@ -47,7 +47,7 @@
   "change": [
     "({objForm, meta}) => {",
     "const journee_date_fin = objForm.value.visit_date_min;",
-    "if (objForm.controls.visit_date_min.valid) {",
+    "if (objForm.controls.visit_date_min.valid && !objForm.controls.visit_date_max._pendingDirty) {",
     "objForm.patchValue({'visit_date_max':journee_date_fin})",
     "}",
     "}",

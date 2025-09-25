@@ -22,17 +22,20 @@
       "type_widget": "taxonomy",
       "attribut_label": "Espèce",
       "type_util": "taxonomy",
+      "value": 186233,
+      "hidden": true,
       "required": true,
       "id_list": "__MODULE.ID_LIST_TAXONOMY"
     },
     "liste_cd_nom": {
       "type_widget": "datalist",
-      "attribut_label": "Liste des espèces possibles dans le cas d'un cadavre pour laquelle une identification à l'espèce n'est pas possible.",
+      "attribut_label": "Liste des taxons quand seul la famille d'un cadavre est identifiable (champ cd_nom).",
       "keyValue": "cd_nom",
       "keyLabel": "__MODULE.TAXONOMY_DISPLAY_FIELD_NAME",
       "multiple": true,
       "api": "taxref/allnamebylist/__MODULE.ID_LIST_TAXONOMY",
       "application": "TaxHub",
+      "params": {"limit": "100000"},
       "type_util": "taxonomy",
       "required": true
     },

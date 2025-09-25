@@ -1,25 +1,8 @@
--- Vue générique pour alimenter la synthèse dans le cadre d'un protocole site-visite-observation
--- 
--- Ce fichier peut être copié dans le dossier du sous-module et renommé en synthese.sql (et au besoin personnalisé)
--- le fichier sera joué à l'installation avec la valeur de module_code qui sera attribué automatiquement
---
---
--- Personalisations possibles
---
---  - ajouter des champs specifiques qui peuvent alimenter la synthese
---      jointure avec les table de complement
---
---  - choisir les valeurs de champs de nomenclatures qui seront propres au modules
--- ce fichier contient une variable :module_code (ou :'module_code')
--- utiliser psql avec l'option -v module_code=<module_code>
--- ne pas remplacer cette variable, elle est indispensable pour les scripts d'installations
--- le module pouvant être installé avec un code différent de l'original
---suivimortalite
-DROP VIEW IF EXISTS gn_monitoring.v_synthese_:module_code;
-CREATE VIEW gn_monitoring.v_synthese_:module_code AS WITH source AS (
+DROP VIEW IF EXISTS gn_monitoring.v_synthese_efficacite_observateur;
+CREATE VIEW gn_monitoring.v_synthese_efficacite_observateur AS WITH source AS (
 	SELECT id_source
 	FROM gn_synthese.t_sources
-	WHERE name_source = CONCAT('MONITORING_', UPPER(:'module_code'))
+	WHERE name_source = CONCAT('MONITORING_', UPPER(:module_code))
 	LIMIT 1
 ), sites AS (
 	SELECT id_base_site,
@@ -40,7 +23,7 @@ visits AS (
 		comments,
 		(
 			case
-				when visitecompl.data->'id_nomenclature_tech_collect_campanule'::text = 'null' then '314' --non renseigné
+				when visitecompl.data->'id_nomenclature_tech_collect_campanule'::text = 'null' then '314'
 				else visitecompl.data->'id_nomenclature_tech_collect_campanule'::text
 			end
 		)::int as id_nomenclature_tech_collect_campanule,
@@ -56,92 +39,59 @@ observers AS (
 		JOIN utilisateurs.t_roles r ON r.id_role = cvo.id_role
 	GROUP BY id_base_visit
 )
-/*cor_deter_obsvation as (	
- SELECT obscompl.id_observation as id_observation,
- --(obscompl.data -> 'determinateur')::json as deterjson,
- json_array_elements( (obscompl.data -> 'determinateur')::json ) as id_role
- from gn_monitoring.t_observation_complements obscompl
- order by id_observation
- ),
- determinateurs_monit AS (
- SELECT cor_deter_obsvation.id_observation,
- STRING_AGG(roles.nom_role || ' ' || roles.prenom_role, ', ' ORDER BY roles.nom_role, roles.prenom_role)  AS determinateurs
- 
- FROM cor_deter_obsvation
- LEFT JOIN utilisateurs.t_roles roles ON roles.id_role::text = cor_deter_obsvation.id_role::text
- GROUP BY cor_deter_obsvation.id_observation
- )*/
 SELECT o.uuid_observation AS unique_id_sinp,
 	v.uuid_base_visit AS unique_id_sinp_grp,
 	source.id_source,
 	o.id_observation AS entity_source_pk_value,
 	v.id_dataset,
 	ref_nomenclatures.get_id_nomenclature('NAT_OBJ_GEO', 'St') AS id_nomenclature_geo_object_nature,
-	--grp_method,
 	v.id_nomenclature_grp_typ,
-	-- TYP_GRP
 	v.id_nomenclature_tech_collect_campanule,
-	--TECHNIQUE_OBS
-	-- id_nomenclature_bio_status, -- STATUT_BIO
 	(
 		case
-			when obscompl.data->'presence_cadavre'::text = 'null' then '153' --non renseigné
+			when obscompl.data->'presence_cadavre'::text = 'null' then '153'
 			else obscompl.data->'presence_cadavre'::text
 		end
 	)::int as id_nomenclature_bio_condition,
-	-- ETA_BIO
-	--id_nomenclature_naturalness, -- NATURALITE
-	--id_nomenclature_exist_proof, -- PREUVE_EXIST
 	(
 		case
-			when obscompl.data->'technique_observation'::text = 'null' then '58' --inconnu
+			when obscompl.data->'technique_observation'::text = 'null' then '58'
 			else obscompl.data->'technique_observation'::text
 		end
 	)::int AS id_nomenclature_obs_technique,
-	--METHODE_OBS
-	--id_nomenclature_valid_status,  --STATUT_VALID
-	--id_nomenclature_diffusion_level, -- NIV_PRECIS
 	(
 		case
-			when obscompl.data->'stade_de_vie'::text = 'null' then '1' --inconnu
+			when obscompl.data->'stade_de_vie'::text = 'null' then '1'
 			else obscompl.data->'stade_de_vie'::text
 		end
 	)::int AS id_nomenclature_life_stage,
-	-- STADE_VIE
 	(
 		case
-			when obscompl.data->'sexe'::text = 'null' then '168' --non renseigné
+			when obscompl.data->'sexe'::text = 'null' then '168'
 			else obscompl.data->'sexe'::text
 		end
 	)::int AS id_nomenclature_sex,
-	-- SEXE
 	(
 		case
-			when obscompl.data->'technique_observation'::text = '37' then ref_nomenclatures.get_id_nomenclature('OBJ_DENBR', 'IND') --si 'vu' = individu
+			when obscompl.data->'technique_observation'::text = '37' then ref_nomenclatures.get_id_nomenclature('OBJ_DENBR', 'IND')
 			else ref_nomenclatures.get_id_nomenclature('OBJ_DENBR', 'NSP')
 		end
 	)::int AS id_nomenclature_obj_count,
-	--objet du denombrement
 	(
 		case
-			when obscompl.data->'technique_observation'::text = '37' then ref_nomenclatures.get_id_nomenclature('TYP_DENBR', 'Co') --si 'vu' = compté
+			when obscompl.data->'technique_observation'::text = '37' then ref_nomenclatures.get_id_nomenclature('TYP_DENBR', 'Co')
 			else ref_nomenclatures.get_id_nomenclature('TYP_DENBR', 'Es')
 		end
 	)::int AS id_nomenclature_type_count,
-	--objet du denombrement
-	-- id_nomenclature_sensitivity, --SENSIBILITE
 	(
 		case
-			when obscompl.data->'statut_observation'::text = 'null' then '85' --nsp
+			when obscompl.data->'statut_observation'::text = 'null' then '85'
 			else obscompl.data->'statut_observation'::text
 		end
 	)::int AS id_nomenclature_observation_status,
-	--STATUT_OBS
-	-- id_nomenclature_blurring, -- DEE_FLOU
-	-- id_nomenclature_behaviour, -- OCC_COMPORTEMENT
 	(
 		case
-			when obscompl.data->'statut_source'::text = 'null' then '72' --nsp
+			when obscompl.data->'statut_source'::text = 'null' then '72'
 			else obscompl.data->'statut_source'::text
 		end
 	)::int AS id_nomenclature_source_status,
@@ -161,9 +111,6 @@ SELECT o.uuid_observation AS unique_id_sinp,
 	o.id_observation,
 	o.cd_nom,
 	t.nom_complet AS nom_cite,
-	--meta_v_taxref
-	--sample_number_proof
-	--digital_proofvue
 	alt.altitude_min,
 	alt.altitude_max,
 	s.the_geom_4326,
@@ -171,32 +118,26 @@ SELECT o.uuid_observation AS unique_id_sinp,
 	s.geom_local as the_geom_local,
 	v.date_min,
 	v.date_max,
-	--validator
-	--validation_comment
 	obs.observers,
-	--determinateurs_monit.determinateurs AS determiner,
 	v.id_digitiser,
-	--id_nomenclature_determination_method
-	--meta_validation_date
-	--meta_create_date,
-	--meta_update_date,
-	--last_action
 	v.id_module,
 	v.comments AS comment_context,
 	o.comments AS comment_description,
 	obs.ids_observers,
-	-- ## Colonnes complémentaires qui ont leur utilité dans la fonction synthese.import_row_from_table
 	v.id_base_site,
-	v.id_base_visit
+	v.id_base_visit,
+	tsg.id_sites_group
 FROM gn_monitoring.t_observations o
 	JOIN gn_monitoring.t_observation_complements obscompl on o.id_observation = obscompl.id_observation
 	JOIN visits v ON v.id_base_visit = o.id_base_visit
 	JOIN sites s ON s.id_base_site = v.id_base_site
 	JOIN gn_commons.t_modules m ON m.id_module = v.id_module
 	JOIN taxonomie.taxref t ON t.cd_nom = o.cd_nom
+	JOIN gn_monitoring.t_site_complements tsc ON s.id_base_site = tsc.id_base_site 
+	LEFT JOIN gn_monitoring.t_sites_groups tsg on tsg.id_sites_group = tsc.id_sites_group 
 	JOIN source ON TRUE
-	JOIN observers obs ON obs.id_base_visit = v.id_base_visit
-	LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom_local) alt (altitude_min, altitude_max) ON TRUE --left JOIN determinateurs_monit on determinateurs_monit.id_observation = o.id_observation
-WHERE m.module_code = :'module_code';
+	LEFT JOIN observers obs ON obs.id_base_visit = v.id_base_visit
+	LEFT JOIN LATERAL ref_geo.fct_get_altitude_intersection(s.geom_local) alt (altitude_min, altitude_max) ON TRUE
+WHERE m.module_code::text = :module_code;
 SELECT *
-FROM gn_monitoring.v_synthese_:module_code
+FROM gn_monitoring.v_synthese_efficacite_observateur

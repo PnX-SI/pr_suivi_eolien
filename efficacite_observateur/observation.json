@@ -63,7 +63,7 @@
     },
     "id_nomenclature_presence_foret": {
       "type_widget": "nomenclature",
-      "attribut_label": "Localisation du cadavre ou du leurre en forêt ou non",
+      "attribut_label": "Présence de forêt à l'emplacement du cadavre.",
       "code_nomenclature_type": "PRES_FORET",
       "type_util": "nomenclature",
       "required": true,

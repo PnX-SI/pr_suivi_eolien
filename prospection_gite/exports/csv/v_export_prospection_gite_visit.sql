@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS gn_monitoring.v_export_:module_code_visit;
-CREATE OR REPLACE VIEW gn_monitoring.v_export_:module_code_visit as
+DROP VIEW IF EXISTS gn_monitoring.v_export_prospection_gite_visit;
+CREATE OR REPLACE VIEW gn_monitoring.v_export_prospection_gite_visit as
 select tm.module_code as protocole,
     tbs.base_site_code as idGite,
     tbv.id_base_site,
@@ -22,10 +22,10 @@ from gn_monitoring.t_base_visits tbv
     join utilisateurs.bib_organismes bo on tr.id_organisme = bo.id_organisme
     left join gn_meta.t_datasets td on td.id_dataset = tbv.id_dataset
     left join gn_monitoring.t_base_sites tbs on tbs.id_base_site = tbv.id_base_site
-    left join gn_monitoring.cor_type_site cts on tbs.id_base_site = cts.id_base_site
+    left join gn_monitoring.cor_site_type cts on tbs.id_base_site = cts.id_base_site
     left join gn_monitoring.cor_module_type cmt on cmt.id_type_site = cts.id_type_site
     left join gn_commons.t_modules tm on tm.id_module = cmt.id_module
-where tm.module_code::text = :module_code
+where tm.module_code::text = 'prospection_gite'
 group by tbv.id_base_site,
     tm.module_code,
     tbv.id_base_visit,
