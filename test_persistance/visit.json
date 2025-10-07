@@ -1,6 +1,7 @@
 {
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
+    "id_dataset",
     "id_base_site",
     "type_donnee",
     "observers_txt",
@@ -17,9 +18,6 @@
     "observers_txt": {
       "required": false,
       "hidden": true
-    },
-    "id_dataset": {
-      "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
     },
     "type_donnee": {
       "type_widget": "text",

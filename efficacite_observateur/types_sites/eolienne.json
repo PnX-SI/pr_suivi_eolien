@@ -51,11 +51,6 @@
       "min": 0,
       "required": true,
       "type_widget": "number"
-    },
-    "modele_eolienne": {
-      "attribut_label": "Modèle de l'éolienne",
-      "required": true,
-      "type_widget": "text"
     }
   }
 }

@@ -1,5 +1,6 @@
 { 
   "display_properties": [
+    "id_dataset",
     "id_base_site",
     "observers_txt",
     "visit_date_min",
@@ -20,9 +21,6 @@
     "observers_txt": {
       "required": false,
       "hidden": true
-    },
-    "id_dataset": {
-      "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
     },
     "visit_date_min": {
       "type_widget": "date",

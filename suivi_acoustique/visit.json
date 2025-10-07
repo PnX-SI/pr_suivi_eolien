@@ -88,9 +88,6 @@
     ],
     "map_label_field_name": "base_site_code",
     "specific": {
-        "id_dataset": {
-            "hidden": "({meta}) => meta.dataset && Object.keys(meta.dataset).length == 1"
-        },
         "type_etude": {
             "type_widget": "nomenclature",
             "attribut_label": "Type d'étude, pré ou post-implantation.",
