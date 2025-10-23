@@ -24,8 +24,7 @@
   "display_list": [
     "base_site_name",
     "base_site_code",
-    "last_visit",
-    "modele_eolienne"
+    "last_visit"
   ],
   "specific": {
     "base_site_code": {

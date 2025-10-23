@@ -1,9 +1,7 @@
 {
     "display_list": [
-      "modele_eolienne"
     ],
     "display_properties": [
-      "modele_eolienne",
       "hauteur_eolienne",
       "longueur_pales",
       "diametre_rotor",

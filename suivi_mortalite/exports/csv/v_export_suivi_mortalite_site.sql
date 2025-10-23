@@ -24,7 +24,6 @@ a.jcode->>'DEP' AS code_departement,
 a.jname->>'DEP' as departement,
 concat(tr.nom_role, ' ', tr.prenom_role) as numerEol,
 org.nom_organisme as organismeNumerEol,
-tsc.data->>'modele_eolienne' AS ModEolienne,
 tsc.data->>'longueur_pales' AS LongPales,
 tsc.data->>'hauteur_eolienne' AS HautEolienne,
 tsc.data->>'distance_lisiere' AS DistLisiereArb
