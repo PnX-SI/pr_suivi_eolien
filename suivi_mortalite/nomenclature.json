@@ -94,14 +94,14 @@
       "type": "PRES_FORET",
       "cd_nomenclature": "1",
       "mnemonique": "1",
-      "label_default": "Fôret",
+      "label_default": "Forêt",
       "definition_default": ""
     },
     {
       "type": "PRES_FORET",
       "cd_nomenclature": "0",
       "mnemonique": "0",
-      "label_default": "Pas de fôret",
+      "label_default": "Pas de forêt",
       "definition_default": ""
     }
   ]
