@@ -1,6 +1,7 @@
 { 
   "display_properties": [
     "id_dataset",
+    "uuid_base_visit",
     "id_base_site",
     "observers_txt",
     "visit_date_min",

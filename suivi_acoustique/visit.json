@@ -2,6 +2,7 @@
     "display_properties": [
         "id_base_site",
         "id_dataset",
+        "uuid_base_visit",
         "type_etude",
         "identifiant_acoustique",
         "type_replicas",

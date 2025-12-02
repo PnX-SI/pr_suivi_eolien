@@ -16,6 +16,7 @@
   "geometry_type": "Point",
   "display_properties": [
     "base_site_name",
+    "uuid_base_site",
     "base_site_code",
     "first_use_date",
     "id_inventor",

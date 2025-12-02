@@ -2,6 +2,7 @@
   "cruved": { "C": 1, "U": 1, "D": 3 },
   "display_properties": [
     "id_dataset",
+    "uuid_base_visit",
     "id_base_site",
     "type_donnee",
     "observers_txt",
